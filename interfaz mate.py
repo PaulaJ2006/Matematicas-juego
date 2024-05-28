@@ -7,4 +7,3 @@ root.resizable(0,0)
 root.title("Descartico")
 root._set_appearance_mode("light")
 
-print("hola")
