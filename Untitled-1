@@ -1,0 +1,15 @@
+
+def read():
+    matriz = [[0 for x in range(9)] for y in range(100)]
+    with open("Datos_Vuelos.txt", "r") as vuelos:
+        for i in range(0, len(matriz)):
+            for j in range(0, len(matriz[i])):
+                matriz[i][j].append()
+                a += matriz[i][j]
+    f.close()
+    print(lista)
+
+if __name__ == "__main__":
+    read()
+    
+
