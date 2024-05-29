@@ -130,8 +130,9 @@ boton_info = ctk.CTkButton(master = frame_principal,
                                     height=90, 
                                     corner_radius=32, 
                                     fg_color="white",
-                                    hover_color= "light blue",
-                                    command = mostrar_info)
+                                    hover_color= "#A4FC6C",
+                                    command = mostrar_info
+                                    )
 
 boton_jugar = ctk.CTkButton(master = frame_principal,
                                     text="JUGAR",
@@ -141,8 +142,9 @@ boton_jugar = ctk.CTkButton(master = frame_principal,
                                     height=90,
                                     corner_radius=32,
                                     fg_color="white",
-                                    hover_color= "light blue",
-                                    command= jugar)
+                                    hover_color= "#FBF4B8",
+                                    command= jugar
+                                    )
 
 boton_ajustes = ctk.CTkButton(master = frame_principal,
                                     text="AJUSTES",
@@ -152,8 +154,9 @@ boton_ajustes = ctk.CTkButton(master = frame_principal,
                                     height=90,
                                     corner_radius=32,
                                     fg_color="white",
-                                    hover_color= "light blue",
-                                    command= ajustes)
+                                    hover_color= "#76FEEF",
+                                    command= ajustes
+                                    )
 
 #----------------------------------------------labels--------------------------------------------
 titulo = ctk.CTkLabel(master = frame_imagen, 
@@ -166,7 +169,8 @@ titulo = ctk.CTkLabel(master = frame_imagen,
 imagen_ = ctk.CTkLabel(master = frame_imagen, 
                                 image = imagen,
                                 width = 200,
-                                height = 200)
+                                height = 200
+                                )
 
 #----------------------------Posicionamiento--------------------------------
 frame_principal.place(relx = 0.5, rely = 0.5, anchor="center")
