@@ -181,6 +181,4 @@ boton_info.place(relx = 0.05, rely = 0.83, anchor = "w")
 boton_jugar.place(relx = 0.599, rely = 0.83, anchor = "e")
 boton_ajustes.place(relx = 0.85, rely = 0.83, anchor = "center")
 
-
-
 root.mainloop()
