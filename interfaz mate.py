@@ -118,7 +118,7 @@ Funcion Cuadrática""",
                             corner_radius=36, 
                             fg_color="#A6FFCD", 
                             hover_color="#A6FFED",
-                            command=cerrar_jugar)
+                            )
         boton_jugar_nivel_1.place(relx=0.5, rely=0.4, anchor="center")
 
         boton_jugar_nivel_2 = ctk.CTkButton(master=nivel_2, 
@@ -130,7 +130,7 @@ Funcion Cuadrática""",
                             corner_radius=36, 
                             fg_color="#A6FFCD", 
                             hover_color="#A6FFED", 
-                            command=cerrar_jugar)
+                            )
         boton_jugar_nivel_2.place(relx=0.5, rely=0.4, anchor="center")    
     root.withdraw()
 
