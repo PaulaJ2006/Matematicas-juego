@@ -42,7 +42,8 @@ def cerrar_info():
         info_window.destroy()
         info_window = None
     root.deiconify()
-#VENTANA JUGAR
+
+#---------------------------------VENTANA JUGAR-----------------------------------------
 def jugar():
     global jugar_window
     if jugar_window is None:
@@ -51,15 +52,86 @@ def jugar():
         jugar_window.resizable(0, 0)
         jugar_window.title("Jugar")
         
-        jugar_frame = ctk.CTkFrame(master=jugar_window, width=1000, height=600, corner_radius=10, fg_color="#D6EAF8", border_color="white", border_width=2)
+        jugar_frame = ctk.CTkFrame(master=jugar_window,
+                            width=1000, 
+                            height=600, 
+                            corner_radius=10, 
+                            fg_color="#D6EAF8", 
+                            border_color="white", 
+                            border_width=2
+                            )
         jugar_frame.place(relx=0.5, rely=0.5, anchor="center")
+
+        nivel_1 = ctk.CTkFrame(master=jugar_frame,  
+                            width=350, 
+                            height=500, 
+                            corner_radius=32, 
+                            fg_color="white", 
+                            border_width=3,
+                            border_color="#8CE5FF"
+                            )
+        nivel_1.place(relx=0.3, rely=0.5, anchor="center")
+
+        nivel_2 = ctk.CTkFrame(master=jugar_frame,
+                            width=350, 
+                            height=500, 
+                            corner_radius=32, 
+                            fg_color="white",
+                            border_width=3,
+                            border_color="#8CE5FF"
+                            )
+        nivel_2.place(relx=0.7, rely=0.5, anchor="center")
         
-        jugar_label = ctk.CTkLabel(master=jugar_frame, text="Aquí va el juego", font=font_1, text_color="black")
-        jugar_label.place(relx=0.5, rely=0.5, anchor="center")
-        
-        close_button = ctk.CTkButton(master=jugar_frame, text="Cerrar", font=font_1, text_color="black", width=100, height=40, corner_radius=32, fg_color="white", hover_color="light blue", command=cerrar_jugar)
-        close_button.place(relx=0.5, rely=0.9, anchor="center")
-        
+        close_button = ctk.CTkButton(master=jugar_frame,
+                            text="Cerrar", 
+                            font=(font_1, 16), 
+                            text_color="black", 
+                            width=95, height=40, 
+                            corner_radius=32, 
+                            fg_color="white", 
+                            hover_color="light blue", 
+                            command=cerrar_jugar)
+        close_button.place(relx=0.06, rely=0.05, anchor="center")
+
+        nivel_1_label = ctk.CTkLabel(master=nivel_1, 
+                            text="""Nivel 1
+Función Lineal""", 
+                            font=font_1, 
+                            text_color="black")
+        nivel_1_label.place(relx=0.5, rely=0.1, anchor="n")
+
+        nivel_2_label = ctk.CTkLabel(master=nivel_2, 
+                            text="""Nivel 2
+Funcion Cuadrática""", 
+                            font=font_1, 
+                            text_color="black",
+                            )
+
+        nivel_2_label.place(relx=0.5, rely=0.1, anchor="n")
+
+        boton_jugar_nivel_1 = ctk.CTkButton(master=nivel_1,
+                            text="Jugar", 
+                            font=(font_1, 24), 
+                            text_color="black", 
+                            width=200, 
+                            height=50, 
+                            corner_radius=36, 
+                            fg_color="#A6FFCD", 
+                            hover_color="#A6FFED",
+                            command=cerrar_jugar)
+        boton_jugar_nivel_1.place(relx=0.5, rely=0.4, anchor="center")
+
+        boton_jugar_nivel_2 = ctk.CTkButton(master=nivel_2, 
+                            text="Jugar", 
+                            font=(font_1, 24), 
+                            text_color="black", 
+                            width=200, 
+                            height=50, 
+                            corner_radius=36, 
+                            fg_color="#A6FFCD", 
+                            hover_color="#A6FFED", 
+                            command=cerrar_jugar)
+        boton_jugar_nivel_2.place(relx=0.5, rely=0.4, anchor="center")    
     root.withdraw()
 
 def cerrar_jugar():
@@ -85,7 +157,7 @@ def ajustes():
         ajustes_label = ctk.CTkLabel(master=ajustes_frame, text="Aquí van los ajustes", font=font_1, text_color="black")
         ajustes_label.place(relx=0.5, rely=0.5, anchor="center")
         
-        close_button = ctk.CTkButton(master=ajustes_frame, text="Cerrar", font=font_1, text_color="black", width=100, height=40, corner_radius=32, fg_color="white", hover_color="light blue", command=cerrar_ajustes)
+        close_button = ctk.CTkButton(master=ajustes_frame, text="Cerrar", font=(font_1, 10), text_color="black", width=100, height=40, corner_radius=32, fg_color="white", hover_color="light blue", command=cerrar_ajustes)
         close_button.place(relx=0.5, rely=0.9, anchor="center")
         
     root.withdraw()
