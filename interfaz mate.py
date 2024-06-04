@@ -12,17 +12,38 @@ root.title("Descartico")
 root._set_appearance_mode("light")
 root.iconbitmap("descartico.ico")
 
-#---------------------------------variables-------------------------------------
-#VENTANA INFO
+
+#----------------------------------variables-------------------------------------
+font_1 = ctk.CTkFont(family="Inherit", size=26, weight="bold")
+font_2 = ctk.CTkFont(family="Cooper Black", size = 35, weight="bold")
+imagen = ctk.CTkImage(light_image=Image.open("descartes.png"), 
+                                dark_image=Image.open("descartes.png"),
+                                size = (300,300)
+                                )
+imagen_tipos_funciones = ctk.CTkImage(light_image=Image.open("tipos_funciones.png"), 
+                                dark_image=Image.open("tipos_funciones.png"),
+                                size = (800,600))
+
+funcion_inyectiva = ctk.CTkImage(light_image=Image.open("funcion_inyectiva.png"), 
+                                dark_image=Image.open("funcion_inyectiva.png"),
+                                size = (800,600))
+
+funcion_sobreyectiva = ctk.CTkImage(light_image=Image.open("funcion_sobreyectiva.png"),
+                                dark_image=Image.open("funcion_sobreyectiva.png"),
+                                size = (800,560))
+
 definicion_funcion ="""DEFINICIÓN DE UNA FUNCIÓN
 
 La función de un conjunto X en un conjunto Y es una correspondencia que le asigna 
 a cada elemento de X uno y sólo un elemento en Y. 
 
-El conjunto X es el dominio de la función, el Y es el rango. Se denota con una letra f o g.
+El conjunto X es el dominio de la función, el Y es el rango. 
+Se denota con una letra f o g.
+
 DOMINIO
 Son valores que se le permiten ingresar a una función (valores de x). 
 Es el conjunto de todas las entradas reales que dan resultados reales.
+
 RANGO 
 Es el conjunto de valores que responden o se generan en una función (valores de y).
 """
@@ -30,12 +51,25 @@ inyectiva = """CLASES DE FUNCIONES
 
 Funciones Inyectivas, Sobreyectivas y Biyectivas
 
-INYECTIVA
+INYECTIVAS
 
 Una función es inyectiva cuando no hay dos elementos del dominio que tengan la misma imagen.
 Es decir, para cualesquiera dos elementos a y b, pertenecientes al dominio de la función Domf, 
 si sus imágenes f(a) y f(b) son iguales, los elementos son necesariamente iguales.
 """
+sobreyectiva = """ SOBREYECTIVAS
+
+Una función es sobreyectiva, también llamada suprayectiva o exhaustiva,
+cuando el rango y el recorrido coinciden. 
+Es decir, para cualquier elemento Y del rango existe otro elemento X del dominio
+tal que Y es la imagen de X por f."""
+
+biyectiva = """BIYECTIVAS
+
+Una función es biyectiva, cuando es inyectiva y sobreyectiva al mismo tiempo.
+Es decir, para cualquier elemento Y del rango existe un único elemento X del dominio
+tal que y es la imagen de x por f."""
+
 info_window = None
 jugar_window = None
 ajustes_window = None
@@ -73,16 +107,16 @@ def mostrar_info():
                                     height = 240,
                                     font = (font_1, 22),
                                     text_color = "black",
-                                    fg_color="pink",
+                                    fg_color="transparent",
                                     )
-        label_funcion_1.pack(padx=5, pady=5, expand=True, anchor="n") 
+        label_funcion_1.pack(padx=5, pady=2, expand=True, anchor="n") 
         
         imagen_categoria_funciones = ctk.CTkLabel(master = frame_lectura, 
                                 image = imagen_tipos_funciones,
                                 width = 800,
                                 height = 800
                                 )
-        imagen_categoria_funciones.pack(padx=5, pady=5, expand=True, anchor="center")
+        imagen_categoria_funciones.pack(padx=5, pady=2, expand=True, anchor="center")
 
         texto_funcion_inyectiva = ctk.CTkLabel(master = frame_lectura,
                                     text = inyectiva,
@@ -90,16 +124,49 @@ def mostrar_info():
                                     height = 240,
                                     font = (font_1, 21),
                                     text_color = "black",
-                                    fg_color="pink",
+                                    fg_color="transparent",
                                     )
-        texto_funcion_inyectiva.pack(padx=5, pady=5, expand=True)
+        texto_funcion_inyectiva.pack(padx=5, pady=2, expand=True, anchor="center")
 
         imagen_funcion_inyectiva = ctk.CTkLabel(master = frame_lectura, 
                                 image = funcion_inyectiva,
                                 width = 800,
                                 height = 800
                                 )
-        imagen_funcion_inyectiva.pack(padx=5, pady=5, expand=True, anchor="center")
+        imagen_funcion_inyectiva.pack(padx=5, pady=2, expand=True, anchor="center")
+
+        texto_funcion_sobreyectiva = ctk.CTkLabel(master = frame_lectura, 
+                                    text = sobreyectiva,
+                                    width = 910,
+                                    height = 240,
+                                    font = (font_1, 21),
+                                    text_color = "black",
+                                    fg_color="PeachPuff",
+                                    )
+        texto_funcion_sobreyectiva.pack(padx=5, pady=2, expand=True, anchor="center")
+
+        imagen_funcion_sobreyectiva = ctk.CTkLabel(master = frame_lectura, 
+                                image = funcion_sobreyectiva,
+                                width = 800,
+                                height = 800
+                                )
+        imagen_funcion_sobreyectiva.pack(padx=5, pady=2, expand=True, anchor="center")
+
+        texto_funcion_biyectiva = ctk.CTkLabel(master = frame_lectura, 
+                                    text = biyectiva,
+                                    width = 910,
+                                    height = 240,
+                                    font = (font_1, 21),
+                                    text_color = "black",
+                                    fg_color="PeachPuff",
+                                    )
+        texto_funcion_biyectiva.pack(padx=5, pady=2, expand=True, anchor="center")
+
+
+
+        
+
+
     root.withdraw()
 
 def cerrar_info():
@@ -211,22 +278,6 @@ def cerrar_jugar():
 #VENTANA AJUSTES
 
 
-
-
-#----------------------------------variables-------------------------------------
-font_1 = ctk.CTkFont(family="Inherit", size=26, weight="bold")
-font_2 = ctk.CTkFont(family="Cooper Black", size = 35, weight="bold")
-imagen = ctk.CTkImage(light_image=Image.open("descartes.png"), 
-                                dark_image=Image.open("descartes.png"),
-                                size = (300,300)
-                                )
-imagen_tipos_funciones = ctk.CTkImage(light_image=Image.open("tipos_funciones.png"), 
-                                dark_image=Image.open("tipos_funciones.png"),
-                                size = (800,600))
-
-funcion_inyectiva = ctk.CTkImage(light_image=Image.open("funcion_inyectiva.png"), 
-                                dark_image=Image.open("funcion_inyectiva.png"),
-                                size = (800,600))
 
 #--------------------------------------------frames------------------------------------------
 frame_principal = ctk.CTkFrame(master = root, 
