@@ -1,7 +1,7 @@
 from tkinter import *
 import customtkinter as ctk
 from PIL import Image, ImageTk
-
+import variables
 
 #----------------------------------ventanas---------------------------------------
 #VENTANA PRINCIPAL
@@ -31,50 +31,18 @@ funcion_inyectiva = ctk.CTkImage(light_image=Image.open("funcion_inyectiva.png")
 funcion_sobreyectiva = ctk.CTkImage(light_image=Image.open("funcion_sobreyectiva.png"),
                                 dark_image=Image.open("funcion_sobreyectiva.png"),
                                 size = (800,560))
+funcion_biyectiva = ctk.CTkImage(light_image=Image.open("funcion_biyectiva.png"),
+                                dark_image=Image.open("funcion_biyectiva.png"),
+                                size = (800,560))
 
-definicion_funcion ="""DEFINICIÓN DE UNA FUNCIÓN
-
-La función de un conjunto X en un conjunto Y es una correspondencia que le asigna 
-a cada elemento de X uno y sólo un elemento en Y. 
-
-El conjunto X es el dominio de la función, el Y es el rango. 
-Se denota con una letra f o g.
-
-DOMINIO
-Son valores que se le permiten ingresar a una función (valores de x). 
-Es el conjunto de todas las entradas reales que dan resultados reales.
-
-RANGO 
-Es el conjunto de valores que responden o se generan en una función (valores de y).
-"""
-inyectiva = """CLASES DE FUNCIONES
-
-Funciones Inyectivas, Sobreyectivas y Biyectivas
-
-INYECTIVAS
-
-Una función es inyectiva cuando no hay dos elementos del dominio que tengan la misma imagen.
-Es decir, para cualesquiera dos elementos a y b, pertenecientes al dominio de la función Domf, 
-si sus imágenes f(a) y f(b) son iguales, los elementos son necesariamente iguales.
-"""
-sobreyectiva = """ SOBREYECTIVAS
-
-Una función es sobreyectiva, también llamada suprayectiva o exhaustiva,
-cuando el rango y el recorrido coinciden. 
-Es decir, para cualquier elemento Y del rango existe otro elemento X del dominio
-tal que Y es la imagen de X por f."""
-
-biyectiva = """BIYECTIVAS
-
-Una función es biyectiva, cuando es inyectiva y sobreyectiva al mismo tiempo.
-Es decir, para cualquier elemento Y del rango existe un único elemento X del dominio
-tal que y es la imagen de x por f."""
 
 info_window = None
 jugar_window = None
 ajustes_window = None
+aprender_window = None
 #----------------------------------funciones-------------------------------------
-#VENTANA INFORMACION
+#-----------------------------VENTANA INFORMACION-------------------------------------
+
 def mostrar_info():
     global info_window
     global definicion_funcion
@@ -87,12 +55,12 @@ def mostrar_info():
         info_frame = ctk.CTkFrame(master=info_window, width=1000, height=600, corner_radius=10, fg_color="#D6EAF8", border_color="white", border_width=2)
         info_frame.place(relx=0.5, rely=0.5, anchor="center")
         
-        close_button = ctk.CTkButton(master=info_frame, text="Cerrar", font=font_1, text_color="black", width=100, height=40, corner_radius=32, fg_color="white", hover_color="light blue", command=cerrar_info)
-        close_button.place(relx=0.5, rely=0.9, anchor="center")
+        close_button = ctk.CTkButton(master=info_frame, text="Cerrar", font=(font_1,16), text_color="black", width=100, height=40, corner_radius=32, fg_color="white", hover_color="light blue", command=cerrar_info)
+        close_button.place(relx=0.07, rely=0.04, anchor="center")
 
         frame_lectura = ctk.CTkScrollableFrame(master = info_frame,
                         width = 950,
-                        height = 500,
+                        height = 430,
                         fg_color = "light blue",
                         corner_radius = 30,
                         scrollbar_button_color = "beige",
@@ -102,7 +70,7 @@ def mostrar_info():
 
 
         label_funcion_1 = ctk.CTkLabel(master = frame_lectura,
-                                    text = definicion_funcion,
+                                    text = variables.definicion_funcion,
                                     width = 910,
                                     height = 240,
                                     font = (font_1, 22),
@@ -114,12 +82,13 @@ def mostrar_info():
         imagen_categoria_funciones = ctk.CTkLabel(master = frame_lectura, 
                                 image = imagen_tipos_funciones,
                                 width = 800,
-                                height = 800
+                                height = 800,
+                                text = ""
                                 )
         imagen_categoria_funciones.pack(padx=5, pady=2, expand=True, anchor="center")
 
         texto_funcion_inyectiva = ctk.CTkLabel(master = frame_lectura,
-                                    text = inyectiva,
+                                    text = variables.inyectiva,
                                     width = 910,
                                     height = 240,
                                     font = (font_1, 21),
@@ -131,40 +100,46 @@ def mostrar_info():
         imagen_funcion_inyectiva = ctk.CTkLabel(master = frame_lectura, 
                                 image = funcion_inyectiva,
                                 width = 800,
-                                height = 800
+                                height = 800,
+                                text=""
                                 )
         imagen_funcion_inyectiva.pack(padx=5, pady=2, expand=True, anchor="center")
 
         texto_funcion_sobreyectiva = ctk.CTkLabel(master = frame_lectura, 
-                                    text = sobreyectiva,
+                                    text = variables.sobreyectiva,
                                     width = 910,
                                     height = 240,
                                     font = (font_1, 21),
                                     text_color = "black",
-                                    fg_color="PeachPuff",
+                                    fg_color="transparent",
                                     )
         texto_funcion_sobreyectiva.pack(padx=5, pady=2, expand=True, anchor="center")
 
         imagen_funcion_sobreyectiva = ctk.CTkLabel(master = frame_lectura, 
                                 image = funcion_sobreyectiva,
                                 width = 800,
-                                height = 800
+                                height = 800,
+                                text=""
                                 )
         imagen_funcion_sobreyectiva.pack(padx=5, pady=2, expand=True, anchor="center")
 
         texto_funcion_biyectiva = ctk.CTkLabel(master = frame_lectura, 
-                                    text = biyectiva,
+                                    text = variables.biyectiva,
                                     width = 910,
                                     height = 240,
                                     font = (font_1, 21),
                                     text_color = "black",
-                                    fg_color="PeachPuff",
+                                    fg_color="transparent",
                                     )
         texto_funcion_biyectiva.pack(padx=5, pady=2, expand=True, anchor="center")
 
-
-
-        
+        imagen_funcion_biyectiva = ctk.CTkLabel(master = frame_lectura, 
+                                image = funcion_biyectiva,
+                                width = 800,
+                                height = 800,
+                                text=""
+                                )  
+        imagen_funcion_biyectiva.pack(padx=5, pady=2, expand=True, anchor="center")
 
 
     root.withdraw()
@@ -196,25 +171,65 @@ def jugar():
         jugar_frame.place(relx=0.5, rely=0.5, anchor="center")
 
         nivel_1 = ctk.CTkFrame(master=jugar_frame,  
-                            width=350, 
-                            height=500, 
+                            width=250, 
+                            height=200, 
                             corner_radius=32, 
                             fg_color="white", 
                             border_width=3,
                             border_color="#8CE5FF"
                             )
-        nivel_1.place(relx=0.3, rely=0.5, anchor="center")
+        nivel_1.place(relx=0.2, rely=0.3, anchor="center")
 
         nivel_2 = ctk.CTkFrame(master=jugar_frame,
-                            width=350, 
-                            height=500, 
+                            width=250, 
+                            height=200, 
                             corner_radius=32, 
                             fg_color="white",
                             border_width=3,
                             border_color="#8CE5FF"
                             )
-        nivel_2.place(relx=0.7, rely=0.5, anchor="center")
+        nivel_2.place(relx=0.5, rely=0.3, anchor="center")
+
+        nivel_3 = ctk.CTkFrame(master=jugar_frame,
+                            width=250, 
+                            height=200, 
+                            corner_radius=32, 
+                            fg_color="white",
+                            border_width=3,
+                            border_color="#8CE5FF"
+                            )
+        nivel_3.place(relx=0.8, rely=0.3, anchor="center")
+
+        nivel_4 = ctk.CTkFrame(master=jugar_frame,
+                            width=250, 
+                            height=200, 
+                            corner_radius=32, 
+                            fg_color="white",
+                            border_width=3,
+                            border_color="#8CE5FF"
+                            )
+        nivel_4.place(relx=0.2, rely=0.7, anchor="center")
         
+        nivel_5 = ctk.CTkFrame(master=jugar_frame,
+                            width=250, 
+                            height=200, 
+                            corner_radius=32, 
+                            fg_color="white",
+                            border_width=3,
+                            border_color="#8CE5FF"
+                            )
+        nivel_5.place(relx=0.5, rely=0.7, anchor="center")
+        
+        nivel_6 = ctk.CTkFrame(master=jugar_frame,
+                            width=250, 
+                            height=200, 
+                            corner_radius=32, 
+                            fg_color="white",
+                            border_width=3,
+                            border_color="#8CE5FF"
+                            )
+        nivel_6.place(relx=0.8, rely=0.7, anchor="center")
+
         close_button = ctk.CTkButton(master=jugar_frame,
                             text="Cerrar", 
                             font=(font_1, 16), 
@@ -229,43 +244,195 @@ def jugar():
         nivel_1_label = ctk.CTkLabel(master=nivel_1, 
                             text="""Nivel 1
 Función Lineal""", 
-                            font=font_1, 
+                            font=(font_1, 18), 
                             text_color="black")
         nivel_1_label.place(relx=0.5, rely=0.1, anchor="n")
 
         nivel_2_label = ctk.CTkLabel(master=nivel_2, 
                             text="""Nivel 2
 Funcion Cuadrática""", 
-                            font=font_1, 
+                            font=(font_1, 18), 
                             text_color="black",
                             )
-
         nivel_2_label.place(relx=0.5, rely=0.1, anchor="n")
+        
+        nivel_3_label = ctk.CTkLabel(master=nivel_3, 
+                            text="""Nivel 3
+Función Exponencial""",
+                            font=(font_1, 18), 
+                            text_color="black",
+                            )
+        nivel_3_label.place(relx=0.5, rely=0.1, anchor="n")
+
+        nivel_4_label = ctk.CTkLabel(master=nivel_4, 
+                            text="""Nivel 4
+Función Logarítmica""", 
+                            font=(font_1, 18), 
+                            text_color="black",
+                            )
+        nivel_4_label.place(relx=0.5, rely=0.1, anchor="n")
+
+        nivel_5_label = ctk.CTkLabel(master=nivel_5, 
+                            text="""Nivel 5 
+Función Trigonométrica""", 
+                            font=(font_1, 18), 
+                            text_color="black",
+                            )
+        nivel_5_label.place(relx=0.5, rely=0.1, anchor="n")
+
+        nivel_6_label = ctk.CTkLabel(master=nivel_6, 
+                            text="""Nivel 6 
+Función Polinómica""",      
+                            font=(font_1, 18), 
+                            text_color="black",
+                            )
+        nivel_6_label.place(relx=0.5, rely=0.1, anchor="n")
 
         boton_jugar_nivel_1 = ctk.CTkButton(master=nivel_1,
                             text="Jugar", 
-                            font=(font_1, 24), 
+                            font=(font_1, 18), 
                             text_color="black", 
                             width=200, 
-                            height=50, 
+                            height=30, 
                             corner_radius=36, 
                             fg_color="#A6FFCD", 
                             hover_color="#A6FFED",
                             )
-        boton_jugar_nivel_1.place(relx=0.5, rely=0.4, anchor="center")
+        boton_jugar_nivel_1.place(relx=0.5, rely=0.5, anchor="center")
+
+        boton_aprender_nivel_1 = ctk.CTkButton(master=nivel_1, 
+                            text="Aprender", 
+                            font=(font_1, 18), 
+                            text_color="black", 
+                            width=200, 
+                            height=30, 
+                            corner_radius=36, 
+                            fg_color="#A6FFCD", 
+                            hover_color="#A6FFED",
+                            command=aprender 
+                            )
+        boton_aprender_nivel_1.place(relx=0.5, rely=0.7, anchor="center")
 
         boton_jugar_nivel_2 = ctk.CTkButton(master=nivel_2, 
                             text="Jugar", 
-                            font=(font_1, 24), 
+                            font=(font_1, 18), 
                             text_color="black", 
                             width=200, 
-                            height=50, 
+                            height=30, 
                             corner_radius=36, 
                             fg_color="#A6FFCD", 
                             hover_color="#A6FFED", 
                             )
-        boton_jugar_nivel_2.place(relx=0.5, rely=0.4, anchor="center")
-        
+        boton_jugar_nivel_2.place(relx=0.5, rely=0.5, anchor="center")
+
+        boton_aprender_nivel_2 = ctk.CTkButton(master=nivel_2, 
+                            text="Aprender", 
+                            font=(font_1, 18), 
+                            text_color="black", 
+                            width=200, 
+                            height=30, 
+                            corner_radius=36, 
+                            fg_color="#A6FFCD", 
+                            hover_color="#A6FFED", 
+                            )
+        boton_aprender_nivel_2.place(relx=0.5, rely=0.7, anchor="center")
+
+        boton_jugar_nivel_3 = ctk.CTkButton(master=nivel_3, 
+                            text="Jugar", 
+                            font=(font_1, 18), 
+                            text_color="black", 
+                            width=200, 
+                            height=30, 
+                            corner_radius=36, 
+                            fg_color="#A6FFCD", 
+                            hover_color="#A6FFED", 
+                            )
+        boton_jugar_nivel_3.place(relx=0.5, rely=0.5, anchor="center")
+
+        boton_aprender_nivel_3 = ctk.CTkButton(master=nivel_3, 
+                            text="Aprender", 
+                            font=(font_1, 18), 
+                            text_color="black", 
+                            width=200, 
+                            height=30, 
+                            corner_radius=36, 
+                            fg_color="#A6FFCD", 
+                            hover_color="#A6FFED", 
+                            )
+        boton_aprender_nivel_3.place(relx=0.5, rely=0.7, anchor="center")
+
+        boton_jugar_nivel_4 = ctk.CTkButton(master=nivel_4, 
+                            text="Jugar", 
+                            font=(font_1, 18), 
+                            text_color="black", 
+                            width=200, 
+                            height=30, 
+                            corner_radius=36, 
+                            fg_color="#A6FFCD", 
+                            hover_color="#A6FFED", 
+                            )
+        boton_jugar_nivel_4.place(relx=0.5, rely=0.5, anchor="center")
+
+        boton_aprender_nivel_4 = ctk.CTkButton(master=nivel_4, 
+                            text="Aprender", 
+                            font=(font_1, 18), 
+                            text_color="black", 
+                            width=200, 
+                            height=30, 
+                            corner_radius=36, 
+                            fg_color="#A6FFCD", 
+                            hover_color="#A6FFED", 
+                            )
+        boton_aprender_nivel_4.place(relx=0.5, rely=0.7, anchor="center")
+
+        boton_jugar_nivel_5 = ctk.CTkButton(master=nivel_5, 
+                            text="Jugar", 
+                            font=(font_1, 18), 
+                            text_color="black", 
+                            width=200, 
+                            height=30, 
+                            corner_radius=36, 
+                            fg_color="#A6FFCD", 
+                            hover_color="#A6FFED", 
+                            )
+        boton_jugar_nivel_5.place(relx=0.5, rely=0.5, anchor="center")
+
+        boton_aprender_nivel_5 = ctk.CTkButton(master=nivel_5, 
+                            text="Aprender", 
+                            font=(font_1, 18), 
+                            text_color="black", 
+                            width=200, 
+                            height=30, 
+                            corner_radius=36, 
+                            fg_color="#A6FFCD", 
+                            hover_color="#A6FFED", 
+                            )
+        boton_aprender_nivel_5.place(relx=0.5, rely=0.7, anchor="center")
+
+        boton_jugar_nivel_6 = ctk.CTkButton(master=nivel_6, 
+                            text="Jugar", 
+                            font=(font_1, 18), 
+                            text_color="black", 
+                            width=200, 
+                            height=30, 
+                            corner_radius=36, 
+                            fg_color="#A6FFCD", 
+                            hover_color="#A6FFED", 
+                            )
+        boton_jugar_nivel_6.place(relx=0.5, rely=0.5, anchor="center")
+
+        boton_aprender_nivel_6 = ctk.CTkButton(master=nivel_6, 
+                            text="Aprender", 
+                            font=(font_1, 18), 
+                            text_color="black", 
+                            width=200, 
+                            height=30, 
+                            corner_radius=36, 
+                            fg_color="#A6FFCD", 
+                            hover_color="#A6FFED", 
+                            )
+        boton_aprender_nivel_6.place(relx=0.5, rely=0.7, anchor="center")
+
     root.withdraw()
 
 def cerrar_jugar():
@@ -275,9 +442,62 @@ def cerrar_jugar():
         jugar_window = None
     root.deiconify()
 
-#VENTANA AJUSTES
+def aprender():
+    global aprender_window
+    if aprender_window is None:
+        aprender_window = ctk.CTkToplevel(root)
+        aprender_window.geometry("1000x600")
+        aprender_window.resizable(0, 0)
+        aprender_window.title("Aprender")
 
+        aprender_frame = ctk.CTkFrame(master=aprender_window, 
+                                    width=1000, 
+                                    height=600, 
+                                    corner_radius=10, 
+                                    fg_color="#D6EAF8", 
+                                    border_color="white", 
+                                    border_width=2)
+        aprender_frame.place(relx=0.5, rely=0.5, anchor="center")
 
+        close_button = ctk.CTkButton(master=aprender_frame, 
+                                    text="Cerrar", 
+                                    font=(font_1,16), 
+                                    text_color="black", 
+                                    width=100, height=40, 
+                                    corner_radius=32, 
+                                    fg_color="white", 
+                                    hover_color="light blue", 
+                                    command=cerrar_aprender)
+        close_button.place(relx=0.06, rely=0.05, anchor="center")
+
+        frame_lectura = ctk.CTkScrollableFrame(master = aprender_frame,
+                        width = 950,
+                        height = 430,
+                        fg_color = "light blue",
+                        corner_radius = 30,
+                        scrollbar_button_color = "beige",
+                        orientation = "vertical"
+                        )
+        frame_lectura.place(relx = 0.5, rely = 0.5, anchor = "center")
+
+        label_funcion_lineal = ctk.CTkLabel(master = frame_lectura,
+                                    text = variables.lineal,
+                                    width = 910,
+                                    height = 240,
+                                    font = (font_1, 22),
+                                    text_color = "black",
+                                    fg_color="transparent",
+                                    )
+        label_funcion_lineal.pack(padx=5, pady=2, expand=True, anchor="n")
+        
+    jugar_window.withdraw()
+
+def cerrar_aprender():
+    global aprender_window
+    if aprender_window is not None:
+        aprender_window.destroy()
+        aprender_window = None
+    jugar_window.deiconify()
 
 #--------------------------------------------frames------------------------------------------
 frame_principal = ctk.CTkFrame(master = root, 
