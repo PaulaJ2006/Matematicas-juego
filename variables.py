@@ -71,8 +71,8 @@ de los valores en el rango, siempre y cuando la pendiente no sea igual a 0.
 """
 cuadratica_1 = """FUNCIÓN CUADRÁTICA
 
-En álgebra, una función cuadrática es una función polinómica con una o más variables en la que el término 
-de grado más alto es de segundo grado (2).
+En álgebra, una función cuadrática es una función polinómica con una o más variables
+en la que el término de grado más alto es de segundo grado (2).
 
 Por ejemplo, son funciones cuadráticas:
 f(x) = x^2+x+2
@@ -83,38 +83,45 @@ Forma general:  〖ax〗^2+bx+c=0   siendo a ≠ 0
 Forma de vértice: y = a ( x – h ) 2 + k
 Forma factorizada:  y=a(x-x_1)(x+x_2)
 
-La gráfica de una función cuadrática es una parábola, una curva de 2 dimensiones en forma de U. Una 
-característica importante del gráfico es que tiene un punto extremo, denominado vértice. Si la parábola se 
-abre hacia arriba, el vértice representa el punto más bajo en el gráfico o el valor mínimo de la función 
+La gráfica de una función cuadrática es una parábola, una curva de 2 dimensiones
+en forma de U. Una característica importante del gráfico es que tiene un punto 
+extremo, denominado vértice. Si la parábola se abre hacia arriba, el vértice 
+representa el punto más bajo en el gráfico o el valor mínimo de la función 
 cuadrática. Si abre hacia abajo el vértice representa el punto más alto de la parábola.
 
-El punto de corte con el eje de ordenadas viene dado por el punto (0, c). Esto quiere decir que el término 
-independiente es el punto en donde la parábola corta el eje y.
+El punto de corte con el eje de ordenadas viene dado por el punto (0, c). 
+Esto quiere decir que el término independiente es el punto en donde la parábola 
+corta el eje y.
 
 MÉTODO DE RESOLUCIÓN
 El método que se utiliza para la resolución de funciones cuadráticas es el siguiente:
-
 """
 
-cuadrática_2 = """El eje de simetría es una recta vertical, paralela al eje y, que atraviesa la gráfica de 
-manera que cada rama de ésta, separada por el eje, es el “reflejo” de la otra, asumiendo la idea de que éste 
-simula un espejo. El eje de simetría intersecta a la parábola en el vértice y al eje X en el valor x que es 
-la abscisa del vértice. La fórmula del valor x mencionado, conocida como Ecuación del Eje de Simetría es:
+cuadratica_2 = """
+El eje de simetría es una recta vertical, paralela al eje y,
+que atraviesa la gráfica de manera que cada rama de ésta, separada por el eje,
+es el “reflejo” de la otra, asumiendo la idea de que éste simula un espejo. 
+El eje de simetría intersecta a la parábola en el vértice y al eje X en el 
+valor x que es la abscisa del vértice. La fórmula del valor x mencionado,
+conocida como Ecuación del Eje de Simetría es:
 
 x=  (-b)/2a
 
 Vértice 
-Al esbozar la gráfica de la función cuadrática: f(x) = ax2 + bx + c, a ≠ 0, a, b, c ∈ IR, observamos que, 
-dependiendo de la orientación de la parábola, esta presenta un punto en el plano cartesiano, que es mínimo 
-si se abre hacia arriba (cóncava), o máximo si se abre hacia abajo (convexa), este punto se denomina vértice 
-de la parábola y se puede determinar a través de la expresión:
+Al esbozar la gráfica de la función cuadrática: 
+f(x) = ax2 + bx + c, a ≠ 0, a, b, c ∈ IR, observamos que, dependiendo de la
+orientación de la parábola, esta presenta un punto en el plano cartesiano,
+que es mínimo si se abre hacia arriba (cóncava), o máximo si se abre 
+hacia abajo (convexa), este punto se denomina vértice de la parábola y se puede
+determinar a través de la expresión:
 
 """
 
-cuadratica_3 = """PROCESO ALGEBRAICO PARA DETERMINAR SI UNA FUNCIÓN POSEE INTERSECCIONES CON EL EJE x
+cuadratica_3 = """PROCESO ALGEBRAICO PARA DETERMINAR SI UNA FUNCIÓN
+POSEE INTERSECCIONES CON EL EJE x
 
-Algebraicamente, se puede determinar rápidamente si una función tiene, o no, intersecciones con el eje x. 
-Para ello, basta analizar el signo del DISCRIMINANTE.
+Algebraicamente, se puede determinar rápidamente si una función tiene, o no,
+intersecciones con el eje x. Para ello, basta analizar el signo del DISCRIMINANTE.
 
 """
 raiz_cuadrada_1 = """FUNCIÓN RAÍZ CUADRADA

@@ -34,6 +34,9 @@ funcion_sobreyectiva = ctk.CTkImage(light_image=Image.open("funcion_sobreyectiva
 funcion_biyectiva = ctk.CTkImage(light_image=Image.open("funcion_biyectiva.png"),
                                 dark_image=Image.open("funcion_biyectiva.png"),
                                 size = (800,560))
+metodo_resolucion_cuadratica = ctk.CTkImage(light_image=Image.open("metodo_resolucion_cuadratica.png"),
+                                dark_image=Image.open("metodo_resolucion_cuadratica.png"),
+                                size = (400,250))
 
 
 info_window = None
@@ -67,7 +70,6 @@ def mostrar_info():
                         orientation = "vertical"
                         )
         frame_lectura.place(relx = 0.5, rely = 0.5, anchor = "center")
-
 
         label_funcion_1 = ctk.CTkLabel(master = frame_lectura,
                                     text = variables.definicion_funcion,
@@ -141,8 +143,10 @@ def mostrar_info():
                                 )  
         imagen_funcion_biyectiva.pack(padx=5, pady=2, expand=True, anchor="center")
 
-
+        
     root.withdraw()
+
+
 
 def cerrar_info():
     global info_window
@@ -150,6 +154,15 @@ def cerrar_info():
         info_window.destroy()
         info_window = None
     root.deiconify()
+
+def cerrar_aprender():
+    global info_window
+    if info_window is not None:
+        info_window.destroy()
+        info_window = None
+    jugar()
+
+
 
 #---------------------------------VENTANA JUGAR-----------------------------------------
 def jugar():
@@ -258,7 +271,7 @@ Funcion Cuadrática""",
         
         nivel_3_label = ctk.CTkLabel(master=nivel_3, 
                             text="""Nivel 3
-Función Exponencial""",
+Función Raíz Cuadrada""",
                             font=(font_1, 18), 
                             text_color="black",
                             )
@@ -266,7 +279,7 @@ Función Exponencial""",
 
         nivel_4_label = ctk.CTkLabel(master=nivel_4, 
                             text="""Nivel 4
-Función Logarítmica""", 
+Función Exponencial""", 
                             font=(font_1, 18), 
                             text_color="black",
                             )
@@ -274,7 +287,7 @@ Función Logarítmica""",
 
         nivel_5_label = ctk.CTkLabel(master=nivel_5, 
                             text="""Nivel 5 
-Función Trigonométrica""", 
+Función Logaritmica""", 
                             font=(font_1, 18), 
                             text_color="black",
                             )
@@ -282,7 +295,7 @@ Función Trigonométrica""",
 
         nivel_6_label = ctk.CTkLabel(master=nivel_6, 
                             text="""Nivel 6 
-Función Polinómica""",      
+Función Seno""",      
                             font=(font_1, 18), 
                             text_color="black",
                             )
@@ -309,7 +322,7 @@ Función Polinómica""",
                             corner_radius=36, 
                             fg_color="#A6FFCD", 
                             hover_color="#A6FFED",
-                            command=aprender 
+                            command=lambda: asignar_parametros(1)
                             )
         boton_aprender_nivel_1.place(relx=0.5, rely=0.7, anchor="center")
 
@@ -333,7 +346,8 @@ Función Polinómica""",
                             height=30, 
                             corner_radius=36, 
                             fg_color="#A6FFCD", 
-                            hover_color="#A6FFED", 
+                            hover_color="#A6FFED",
+                            command=lambda: asignar_parametros(2) 
                             )
         boton_aprender_nivel_2.place(relx=0.5, rely=0.7, anchor="center")
 
@@ -357,7 +371,8 @@ Función Polinómica""",
                             height=30, 
                             corner_radius=36, 
                             fg_color="#A6FFCD", 
-                            hover_color="#A6FFED", 
+                            hover_color="#A6FFED",
+                            command=lambda: asignar_parametros(3) 
                             )
         boton_aprender_nivel_3.place(relx=0.5, rely=0.7, anchor="center")
 
@@ -382,6 +397,7 @@ Función Polinómica""",
                             corner_radius=36, 
                             fg_color="#A6FFCD", 
                             hover_color="#A6FFED", 
+                            command=lambda: asignar_parametros(4)
                             )
         boton_aprender_nivel_4.place(relx=0.5, rely=0.7, anchor="center")
 
@@ -406,6 +422,7 @@ Función Polinómica""",
                             corner_radius=36, 
                             fg_color="#A6FFCD", 
                             hover_color="#A6FFED", 
+                            command=lambda: asignar_parametros(5)
                             )
         boton_aprender_nivel_5.place(relx=0.5, rely=0.7, anchor="center")
 
@@ -429,7 +446,8 @@ Función Polinómica""",
                             height=30, 
                             corner_radius=36, 
                             fg_color="#A6FFCD", 
-                            hover_color="#A6FFED", 
+                            hover_color="#A6FFED",
+                            command=lambda: asignar_parametros(6) 
                             )
         boton_aprender_nivel_6.place(relx=0.5, rely=0.7, anchor="center")
 
@@ -442,7 +460,7 @@ def cerrar_jugar():
         jugar_window = None
     root.deiconify()
 
-def aprender():
+def aprender(valor):
     global aprender_window
     if aprender_window is None:
         aprender_window = ctk.CTkToplevel(root)
@@ -450,55 +468,127 @@ def aprender():
         aprender_window.resizable(0, 0)
         aprender_window.title("Aprender")
 
-        aprender_frame = ctk.CTkFrame(master=aprender_window, 
+        aprender = ctk.CTkFrame(master=aprender_window, 
                                     width=1000, 
                                     height=600, 
                                     corner_radius=10, 
                                     fg_color="#D6EAF8", 
                                     border_color="white", 
                                     border_width=2)
-        aprender_frame.place(relx=0.5, rely=0.5, anchor="center")
+        aprender.place(relx=0.5, rely=0.5, anchor="center")
 
-        close_button = ctk.CTkButton(master=aprender_frame, 
-                                    text="Cerrar", 
-                                    font=(font_1,16), 
-                                    text_color="black", 
-                                    width=100, height=40, 
-                                    corner_radius=32, 
-                                    fg_color="white", 
-                                    hover_color="light blue", 
-                                    command=cerrar_aprender)
-        close_button.place(relx=0.06, rely=0.05, anchor="center")
-
-        frame_lectura = ctk.CTkScrollableFrame(master = aprender_frame,
+        frame_aprender = ctk.CTkScrollableFrame(master = aprender,
                         width = 950,
                         height = 430,
-                        fg_color = "light blue",
                         corner_radius = 30,
+                        fg_color = "light blue",
                         scrollbar_button_color = "beige",
                         orientation = "vertical"
                         )
-        frame_lectura.place(relx = 0.5, rely = 0.5, anchor = "center")
+        frame_aprender.place(relx = 0.5, rely = 0.5, anchor = "center")
 
-        label_funcion_lineal = ctk.CTkLabel(master = frame_lectura,
-                                    text = variables.lineal,
-                                    width = 910,
-                                    height = 240,
-                                    font = (font_1, 22),
-                                    text_color = "black",
-                                    fg_color="transparent",
-                                    )
-        label_funcion_lineal.pack(padx=5, pady=2, expand=True, anchor="n")
+        close_button_aprender = ctk.CTkButton(master=aprender, text="Cerrar", font=(font_1,16), text_color="black", width=100, height=40, corner_radius=32, fg_color="white", hover_color="light blue", command=cerrar_aprender)
+        close_button_aprender.place(relx=0.07, rely=0.04, anchor="center")
+
+        if valor == 1:
+            label_funcion_lineal = ctk.CTkLabel(master = frame_aprender,
+                                        text = variables.lineal,
+                                        width = 910,
+                                        height = 240,
+                                        font = (font_1, 22),
+                                        text_color = "black",
+                                        fg_color="transparent",
+                                        )
+            label_funcion_lineal.pack(padx=5, pady=2, expand=True, anchor="n")
+
+        elif valor == 2:
+            label_funcion_cuadratica_1 = ctk.CTkLabel(master = frame_aprender,
+                                        text = variables.cuadratica_1,
+                                        width = 910,
+                                        height = 240,
+                                        font = (font_1, 22),
+                                        text_color = "black",
+                                        fg_color="transparent",
+                                        )
+            label_funcion_cuadratica_1.pack(padx=2, pady=1, expand=True, anchor="n")
+
+            imagen_metodo_resolucion_cuadratica = ctk.CTkLabel(master = frame_aprender, 
+                                image = metodo_resolucion_cuadratica,
+                                width = 400,
+                                height = 200,
+                                text = ""
+                                )
+            imagen_metodo_resolucion_cuadratica.pack(padx=2, pady=1, expand=True, anchor="center")
+
+            label_funcion_cuadratica_2 = ctk.CTkLabel(master = frame_aprender,
+                                        text = variables.cuadratica_2,
+                                        width = 910,
+                                        height = 240,
+                                        font = (font_1, 22),
+                                        text_color = "black",
+                                        fg_color="transparent",
+                                        )
+            label_funcion_cuadratica_2.pack(padx=2, pady=1, expand=True, anchor="n")
+
+        elif valor == 3:
+            label_funcion_raiz = ctk.CTkLabel(master = frame_aprender,
+                                        text = variables.raiz_cuadrada_1,
+                                        width = 910,
+                                        height = 240,
+                                        font = (font_1, 22),
+                                        text_color = "black",
+                                        fg_color="transparent",
+                                        )
+            label_funcion_raiz.pack(padx=5, pady=2, expand=True, anchor="n")
         
+        elif valor == 4:
+            label_funcion_exponencial = ctk.CTkLabel(master = frame_aprender,
+                                        text = variables.exponencial_1,
+                                        width = 910,
+                                        height = 240,
+                                        font = (font_1, 22),
+                                        text_color = "black",
+                                        fg_color="transparent",
+                                        )
+            label_funcion_exponencial.pack(padx=5, pady=2, expand=True, anchor="n")
+        
+        elif valor == 5:
+            label_funcion_logaritmica = ctk.CTkLabel(master = frame_aprender,
+                                        text = variables.logaritmica_1,
+                                        width = 910,
+                                        height = 240,
+                                        font = (font_1, 22),
+                                        text_color = "black",
+                                        fg_color="transparent",
+                                        )
+            label_funcion_logaritmica.pack(padx=5, pady=2, expand=True, anchor="n")
+        
+        elif valor == 6:
+            label_funcion_seno = ctk.CTkLabel(master = frame_aprender,
+                                        text = variables.seno_1,
+                                        width = 910,
+                                        height = 240,
+                                        font = (font_1, 22),
+                                        text_color = "black",
+                                        fg_color="transparent",
+                                        )
+            label_funcion_seno.pack(padx=5, pady=2, expand=True, anchor="n")
+
     jugar_window.withdraw()
 
+
+def asignar_parametros(numero):
+    aprender(numero)
+    
 def cerrar_aprender():
     global aprender_window
     if aprender_window is not None:
         aprender_window.destroy()
         aprender_window = None
-    jugar_window.deiconify()
-
+    if jugar_window is None:
+        jugar()
+    else:
+        jugar_window.deiconify()
 #--------------------------------------------frames------------------------------------------
 frame_principal = ctk.CTkFrame(master = root, 
                                         width = 1000, 
