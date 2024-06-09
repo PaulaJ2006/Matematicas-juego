@@ -16,28 +16,6 @@ root.iconbitmap("descartico.ico")
 #----------------------------------variables-------------------------------------
 font_1 = ctk.CTkFont(family="Inherit", size=26, weight="bold")
 font_2 = ctk.CTkFont(family="Cooper Black", size = 35, weight="bold")
-imagen = ctk.CTkImage(light_image=Image.open("descartes.png"), 
-                                dark_image=Image.open("descartes.png"),
-                                size = (300,300)
-                                )
-imagen_tipos_funciones = ctk.CTkImage(light_image=Image.open("tipos_funciones.png"), 
-                                dark_image=Image.open("tipos_funciones.png"),
-                                size = (800,600))
-
-funcion_inyectiva = ctk.CTkImage(light_image=Image.open("funcion_inyectiva.png"), 
-                                dark_image=Image.open("funcion_inyectiva.png"),
-                                size = (800,600))
-
-funcion_sobreyectiva = ctk.CTkImage(light_image=Image.open("funcion_sobreyectiva.png"),
-                                dark_image=Image.open("funcion_sobreyectiva.png"),
-                                size = (800,560))
-funcion_biyectiva = ctk.CTkImage(light_image=Image.open("funcion_biyectiva.png"),
-                                dark_image=Image.open("funcion_biyectiva.png"),
-                                size = (800,560))
-metodo_resolucion_cuadratica = ctk.CTkImage(light_image=Image.open("metodo_resolucion_cuadratica.png"),
-                                dark_image=Image.open("metodo_resolucion_cuadratica.png"),
-                                size = (400,250))
-
 
 info_window = None
 jugar_window = None
@@ -82,7 +60,7 @@ def mostrar_info():
         label_funcion_1.pack(padx=5, pady=2, expand=True, anchor="n") 
         
         imagen_categoria_funciones = ctk.CTkLabel(master = frame_lectura, 
-                                image = imagen_tipos_funciones,
+                                image = variables.imagen_tipos_funciones,
                                 width = 800,
                                 height = 800,
                                 text = ""
@@ -100,7 +78,7 @@ def mostrar_info():
         texto_funcion_inyectiva.pack(padx=5, pady=2, expand=True, anchor="center")
 
         imagen_funcion_inyectiva = ctk.CTkLabel(master = frame_lectura, 
-                                image = funcion_inyectiva,
+                                image = variables.funcion_inyectiva,
                                 width = 800,
                                 height = 800,
                                 text=""
@@ -118,7 +96,7 @@ def mostrar_info():
         texto_funcion_sobreyectiva.pack(padx=5, pady=2, expand=True, anchor="center")
 
         imagen_funcion_sobreyectiva = ctk.CTkLabel(master = frame_lectura, 
-                                image = funcion_sobreyectiva,
+                                image = variables.funcion_sobreyectiva,
                                 width = 800,
                                 height = 800,
                                 text=""
@@ -136,7 +114,7 @@ def mostrar_info():
         texto_funcion_biyectiva.pack(padx=5, pady=2, expand=True, anchor="center")
 
         imagen_funcion_biyectiva = ctk.CTkLabel(master = frame_lectura, 
-                                image = funcion_biyectiva,
+                                image = variables.funcion_biyectiva,
                                 width = 800,
                                 height = 800,
                                 text=""
@@ -513,7 +491,7 @@ def aprender(valor):
             label_funcion_cuadratica_1.pack(padx=2, pady=1, expand=True, anchor="n")
 
             imagen_metodo_resolucion_cuadratica = ctk.CTkLabel(master = frame_aprender, 
-                                image = metodo_resolucion_cuadratica,
+                                image = variables.metodo_resolucion_cuadratica,
                                 width = 400,
                                 height = 200,
                                 text = ""
@@ -530,6 +508,40 @@ def aprender(valor):
                                         )
             label_funcion_cuadratica_2.pack(padx=2, pady=1, expand=True, anchor="n")
 
+            imagen_cuadratica_2 = ctk.CTkLabel(master = frame_aprender, 
+                                image = variables.imagen_2_cuadratica,
+                                width = 400,
+                                height = 200,
+                                text = ""
+                                )
+            imagen_cuadratica_2.pack(padx=2, pady=1, expand=True, anchor="center")
+
+            label_funcion_cuadratica_3 = ctk.CTkLabel(master = frame_aprender,
+                                        text = variables.cuadratica_3,
+                                        width = 910,
+                                        height = 240,
+                                        font = (font_1, 22),
+                                        text_color = "black",
+                                        fg_color="transparent",
+                                        )
+            label_funcion_cuadratica_3.pack(padx=2, pady=1, expand=True, anchor="n")
+
+            imagen_cuadratica_3 = ctk.CTkLabel(master = frame_aprender, 
+                                image = variables.imagen_3_cuadratica,
+                                width = 290,
+                                height = 70,
+                                text = ""
+                                )
+            imagen_cuadratica_3.pack(padx=2, pady=1, expand=True, anchor="center")
+
+            imagen_cuadratica_4 = ctk.CTkLabel(master = frame_aprender, 
+                                image = variables.imagen_4_cuadratica,
+                                width = 500,
+                                height = 300,
+                                text = ""
+                                )
+            imagen_cuadratica_4.pack(padx=2, pady=1, expand=True, anchor="center")
+
         elif valor == 3:
             label_funcion_raiz = ctk.CTkLabel(master = frame_aprender,
                                         text = variables.raiz_cuadrada_1,
@@ -540,6 +552,48 @@ def aprender(valor):
                                         fg_color="transparent",
                                         )
             label_funcion_raiz.pack(padx=5, pady=2, expand=True, anchor="n")
+            imagen_raiz_1 = ctk.CTkLabel(master = frame_aprender, 
+                                image = variables.imagen_1_raiz,
+                                width = 400,
+                                height = 200,
+                                text = ""
+                                )
+            imagen_raiz_1.pack(padx=2, pady=1, expand=True, anchor="center")
+
+            label_funcion_raiz_2 = ctk.CTkLabel(master = frame_aprender,
+                                        text = variables.raiz_cuadrada_2,
+                                        width = 910,
+                                        height = 240,
+                                        font = (font_1, 22),
+                                        text_color = "black",
+                                        fg_color="transparent",
+                                        )
+            label_funcion_raiz_2.pack(padx=5, pady=2, expand=True, anchor="n")
+
+            imagen_raiz_2 = ctk.CTkLabel(master = frame_aprender, 
+                                image = variables.imagen_2_raiz,
+                                width = 400,
+                                height = 200,
+                                text = ""
+                                )
+            imagen_raiz_2.pack(padx=2, pady=1, expand=True, anchor="center")
+
+            label_funcion_raiz_3 = ctk.CTkLabel(master = frame_aprender,
+                                        text = variables.raiz_cuadrada_3,
+                                        width = 910,
+                                        height = 240,
+                                        font = (font_1, 22),
+                                        text_color = "black",
+                                        fg_color="transparent",
+                                        )
+            label_funcion_raiz_3.pack(padx=5, pady=2, expand=True, anchor="n")
+            imagen_raiz_3 = ctk.CTkLabel(master = frame_aprender, 
+                                image = variables.imagen_3_raiz,
+                                width = 400,
+                                height = 200,
+                                text = ""
+                                )
+            imagen_raiz_3.pack(padx=2, pady=1, expand=True, anchor="center")
         
         elif valor == 4:
             label_funcion_exponencial = ctk.CTkLabel(master = frame_aprender,
@@ -551,6 +605,24 @@ def aprender(valor):
                                         fg_color="transparent",
                                         )
             label_funcion_exponencial.pack(padx=5, pady=2, expand=True, anchor="n")
+
+            imagen_exponencial_1 = ctk.CTkLabel(master = frame_aprender, 
+                                image = variables.imagen_1_exponencial,
+                                width = 400,
+                                height = 200,
+                                text = ""
+                                )
+            imagen_exponencial_1.pack(padx=2, pady=1, expand=True, anchor="center")
+
+            label_funcion_exponencial_2 = ctk.CTkLabel(master = frame_aprender,
+                                        text = variables.exponencial_2,
+                                        width = 910,
+                                        height = 240,
+                                        font = (font_1, 22),
+                                        text_color = "black",
+                                        fg_color="transparent",
+                                        )
+            label_funcion_exponencial_2.pack(padx=5, pady=2, expand=True, anchor="n")
         
         elif valor == 5:
             label_funcion_logaritmica = ctk.CTkLabel(master = frame_aprender,
@@ -562,6 +634,24 @@ def aprender(valor):
                                         fg_color="transparent",
                                         )
             label_funcion_logaritmica.pack(padx=5, pady=2, expand=True, anchor="n")
+
+            imagen_logaritmica_1 = ctk.CTkLabel(master = frame_aprender, 
+                                image = variables.imagen_1_logaritmica,
+                                width = 400,
+                                height = 200,
+                                text = ""
+                                )
+            imagen_logaritmica_1.pack(padx=2, pady=1, expand=True, anchor="center")
+
+            label_funcion_logaritmica_2 = ctk.CTkLabel(master = frame_aprender,
+                                        text = variables.logaritmica_2,
+                                        width = 910,
+                                        height = 240,
+                                        font = (font_1, 22),
+                                        text_color = "black",
+                                        fg_color="transparent",
+                                        )
+            label_funcion_logaritmica_2.pack(padx=5, pady=2, expand=True, anchor="n")
         
         elif valor == 6:
             label_funcion_seno = ctk.CTkLabel(master = frame_aprender,
@@ -573,6 +663,48 @@ def aprender(valor):
                                         fg_color="transparent",
                                         )
             label_funcion_seno.pack(padx=5, pady=2, expand=True, anchor="n")
+            imagen_seno_1 = ctk.CTkLabel(master = frame_aprender, 
+                                image = variables.imagen_1_seno,
+                                width = 400,
+                                height = 200,
+                                text = ""
+                                )
+            imagen_seno_1.pack(padx=2, pady=1, expand=True, anchor="center")
+
+            label_funcion_seno_2 = ctk.CTkLabel(master = frame_aprender,
+                                        text = variables.seno_2,
+                                        width = 910,
+                                        height = 240,
+                                        font = (font_1, 22),
+                                        text_color = "black",
+                                        fg_color="transparent",
+                                        )
+            label_funcion_seno_2.pack(padx=5, pady=2, expand=True, anchor="n")
+
+            imagen_seno_2 = ctk.CTkLabel(master = frame_aprender, 
+                                image = variables.imagen_2_seno,
+                                width = 400,
+                                height = 200,
+                                text = ""
+                                )
+            imagen_seno_2.pack(padx=2, pady=1, expand=True, anchor="center")
+
+            label_funcion_seno_3 = ctk.CTkLabel(master = frame_aprender,
+                                        text = variables.seno_3,
+                                        width = 910,
+                                        height = 240,
+                                        font = (font_1, 22),
+                                        text_color = "black",
+                                        fg_color="transparent",
+                                        )
+            label_funcion_seno_3.pack(padx=5, pady=2, expand=True, anchor="n")
+            imagen_seno_3 = ctk.CTkLabel(master = frame_aprender, 
+                                image = variables.imagen_3_seno,
+                                width = 400,
+                                height = 200,
+                                text = ""
+                                )
+            imagen_seno_3.pack(padx=2, pady=1, expand=True, anchor="center")
 
     jugar_window.withdraw()
 
@@ -642,7 +774,7 @@ titulo = ctk.CTkLabel(master = frame_imagen,
                                 height = 90
                                 )
 imagen_ = ctk.CTkLabel(master = frame_imagen, 
-                                image = imagen,
+                                image = variables.imagen,
                                 width = 200,
                                 height = 200
                                 )
