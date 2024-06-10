@@ -2,6 +2,7 @@ from tkinter import *
 import customtkinter as ctk
 from PIL import Image, ImageTk
 import variables
+from tkinter import messagebox as mb
 
 #----------------------------------ventanas---------------------------------------
 #VENTANA PRINCIPAL
@@ -21,6 +22,7 @@ info_window = None
 jugar_window = None
 ajustes_window = None
 aprender_window = None
+preguntas_window = None
 #----------------------------------funciones-------------------------------------
 #-----------------------------VENTANA INFORMACION-------------------------------------
 
@@ -288,6 +290,7 @@ Función Seno""",
                             corner_radius=36, 
                             fg_color="#A6FFCD", 
                             hover_color="#A6FFED",
+                            command=lambda: preguntas(1)
                             )
         boton_jugar_nivel_1.place(relx=0.5, rely=0.5, anchor="center")
 
@@ -437,6 +440,7 @@ def cerrar_jugar():
         jugar_window.destroy()
         jugar_window = None
     root.deiconify()
+
 
 def aprender(valor):
     global aprender_window
@@ -721,6 +725,1021 @@ def cerrar_aprender():
         jugar()
     else:
         jugar_window.deiconify()
+
+#---------------------------------VENTANA PREGUNTAS---------------------------------------
+def verificar_respuesta(valor, correcto, nivel):
+    if valor == "other":
+        mb.showerror("Error", "Debe seleccionar una opción")
+    elif valor == correcto:
+        variables.vidas += 1
+        mb.showinfo("Correcto", "Respuesta correcta") 
+        preguntas(nivel)
+    else:
+        mb.showerror("Incorrecto", "Respuesta incorrecta")
+        preguntas(nivel)
+    if variables.pregunta == 3 and variables.vidas == 0:
+        mb.showwarning("cochino", "Cochino hp!")
+        verificar_respuesta(0,1, nivel)
+    variables.pregunta += 1
+    
+    
+
+
+def preguntas(valor):
+    global preguntas_window
+    pregunta = variables.pregunta
+    if preguntas_window is not None:
+        preguntas_window.destroy()
+        preguntas_window = None
+    if preguntas_window is None:
+        preguntas_window = ctk.CTkToplevel(root)
+        preguntas_window.geometry("1000x600")
+        preguntas_window.resizable(0, 0)
+        preguntas_window.title("Preguntas")
+        frame_preguntas = ctk.CTkFrame(master=preguntas_window, 
+                                    width=1000, 
+                                    height=600, 
+                                    corner_radius=10, 
+                                    fg_color="#D6EAF8", 
+                                    border_color="white", 
+                                    border_width=2)
+        frame_preguntas.place(relx=0.5, rely=0.5, anchor="center")
+
+        frame_scroll_preguntas = ctk.CTkScrollableFrame(master = preguntas_window,
+                        width = 950,
+                        height = 430,
+                        corner_radius = 30,
+                        fg_color = "light blue",
+                        scrollbar_button_color = "beige",
+                        orientation = "vertical"
+                        )
+        frame_scroll_preguntas.place(relx = 0.5, rely = 0.5, anchor = "center")
+
+        if valor == 1:
+            if pregunta == 1:
+                label_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_1",
+                                            width = 910,
+                                            height = 240,
+                                            font = (font_1, 22),
+                                            text_color = "black",
+                                            fg_color="transparent",
+                                            )
+                label_pregunta_1.pack(padx=5, pady=2, expand=True, anchor="n")
+
+                imagen_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas, 
+                                        image = variables.imagen_1_exponencial,
+                                        width = 400,
+                                        height = 200,
+                                        text = ""
+                                        )
+                imagen_pregunta_1.pack(padx=2, pady=1, expand=True, anchor="center")
+
+                radiobar1 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_1_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar1,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_1_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar1,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_1_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar1,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_3.pack(padx=5, pady=2, expand=True, anchor="n")
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar1.get(), "c", valor)
+                                            )
+                
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+            elif pregunta == 2:
+                
+                label_pregunta_2 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_2",
+                                            width = 910,
+                                            height = 240,
+                                            )
+                
+                radiobar2 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_2_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar2,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_2_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar2,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_2_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar2,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_3.pack(padx=5, pady=2, expand=True, anchor="n")
+
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar2.get(), "c", valor)
+                                            )
+            elif pregunta == 3:
+                label_pregunta_3 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_3",
+                                            width = 910,
+                                            height = 240,
+                                            )
+                
+                radiobar3 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_3_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar3,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_3_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_3_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar3,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_3_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_3_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar3,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black"
+                                            )
+                radio_3_3.pack(padx=5, pady=2, expand=True, anchor="n")
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar3.get(), "c", valor)
+                                            )
+            buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+        elif valor == 2:
+            if pregunta == 1:
+                label_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_1",
+                                            width = 910,
+                                            height = 240,
+                                            font = (font_1, 22),
+                                            text_color = "black",
+                                            fg_color="transparent",
+                                            )
+                label_pregunta_1.pack(padx=5, pady=2, expand=True, anchor="n")
+
+                imagen_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas, 
+                                        image = variables.imagen_1_exponencial,
+                                        width = 400,
+                                        height = 200,
+                                        text = ""
+                                        )
+                imagen_pregunta_1.pack(padx=2, pady=1, expand=True, anchor="center")
+
+                radiobar1 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_1_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar1,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_1_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar1,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_1_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar1,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_3.pack(padx=5, pady=2, expand=True, anchor="n")
+
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar1.get(), "c", valor)
+                                            )
+                
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+
+            elif pregunta == 2:
+                label_pregunta_2 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_2",
+                                            width = 910,
+                                            height = 240,
+                                            )
+                
+                radiobar2 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_2_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar2,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_2_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar2,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_2_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar2,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_3.pack(padx=5, pady=2, expand=True, anchor="n")
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar2.get(), "c", valor)
+                                            )
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+            elif pregunta == 3:
+                label_pregunta_3 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_3",
+                                            width = 910,
+                                            height = 240,
+                                            )
+                
+                radiobar3 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_3_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar3,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_3_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_3_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar3,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_3_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_3_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar3,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_3_3.pack(padx=5, pady=2, expand=True, anchor="n")
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar3.get(), "c", valor)
+                                            )
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+                
+        elif valor == 3:
+            if pregunta == 1:
+                label_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_1",
+                                            width = 910,
+                                            height = 240,
+                                            font = (font_1, 22),
+                                            text_color = "black",
+                                            fg_color="transparent",
+                                            )
+                label_pregunta_1.pack(padx=5, pady=2, expand=True, anchor="n")
+
+                imagen_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas, 
+                                        image = variables.imagen_1_exponencial,
+                                        width = 400,
+                                        height = 200,
+                                        text = ""
+                                        )
+                imagen_pregunta_1.pack(padx=2, pady=1, expand=True, anchor="center")
+
+                radiobar1 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_1_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar1,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_1_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar1,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_1_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar1,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_3.pack(padx=5, pady=2, expand=True, anchor="n")
+
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar1.get(), "c", valor)
+                                            )
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+
+            elif pregunta == 2:
+                label_pregunta_2 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_2",
+                                            width = 910,
+                                            height = 240,
+                                            )
+                
+                radiobar2 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_2_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar2,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_2_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar2,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_2_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar2,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_3.pack(padx=5, pady=2, expand=True, anchor="n")
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar2.get(), "c", valor)
+                                            )
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+
+            elif pregunta == 3:
+                label_pregunta_3 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_3",
+                                            width = 910,
+                                            height = 240,
+                                            )
+                
+                radiobar3 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_3_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar3,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_3_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_3_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar3,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_3_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_3_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar3,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_3_3.pack(padx=5, pady=2, expand=True, anchor="n")
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar3.get(), "c", valor)
+                                            )
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+        elif valor == 4:
+            if pregunta == 1:
+                label_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_1",
+                                            width = 910,
+                                            height = 240,
+                                            font = (font_1, 22),
+                                            text_color = "black",
+                                            fg_color="transparent",
+                                            )
+                label_pregunta_1.pack(padx=5, pady=2, expand=True, anchor="n")
+
+                imagen_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas, 
+                                        image = variables.imagen_1_exponencial,
+                                        width = 400,
+                                        height = 200,
+                                        text = ""
+                                        )
+                imagen_pregunta_1.pack(padx=2, pady=1, expand=True, anchor="center")
+
+                radiobar1 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_1_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar1,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_1_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar1,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_1_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar1,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_3.pack(padx=5, pady=2, expand=True, anchor="n")
+
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar1.get(), "c", valor)
+                                            )
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+
+            elif pregunta == 2:
+                label_pregunta_2 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_2",
+                                            width = 910,
+                                            height = 240,
+                                            )
+                
+                radiobar2 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_2_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar2,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_2_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar2,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_2_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar2,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_3.pack(padx=5, pady=2, expand=True, anchor="n")
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar2.get(), "c", valor)
+                                            )
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+
+            elif pregunta == 3:
+                label_pregunta_3 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_3",
+                                            width = 910,
+                                            height = 240,
+                                            )
+                
+                radiobar3 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_3_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar3,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_3_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_3_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar3,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_3_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_3_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar3,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_3_3.pack(padx=5, pady=2, expand=True, anchor="n")
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar3.get(), "c", valor)
+                                            )
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+        elif valor == 5:
+            if pregunta == 1:
+                label_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_1",
+                                            width = 910,
+                                            height = 240,
+                                            font = (font_1, 22),
+                                            text_color = "black",
+                                            fg_color="transparent",
+                                            )
+                label_pregunta_1.pack(padx=5, pady=2, expand=True, anchor="n")
+
+                imagen_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas, 
+                                        image = variables.imagen_1_exponencial,
+                                        width = 400,
+                                        height = 200,
+                                        text = ""
+                                        )
+                imagen_pregunta_1.pack(padx=2, pady=1, expand=True, anchor="center")
+
+                radiobar1 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_1_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar1,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_1_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar1,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_1_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar1,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_3.pack(padx=5, pady=2, expand=True, anchor="n")
+
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar1.get(), "c", valor)
+                                            )
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+
+            elif pregunta == 2:
+                label_pregunta_2 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_2",
+                                            width = 910,
+                                            height = 240,
+                                            )
+                
+                radiobar2 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_2_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar2,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_2_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar2,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_2_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar2,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_3.pack(padx=5, pady=2, expand=True, anchor="n")
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar2.get(), "c", valor)
+                                            )
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+
+            elif pregunta == 3:
+                label_pregunta_3 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_3",
+                                            width = 910,
+                                            height = 240,
+                                            )
+                
+                radiobar3 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_3_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar3,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_3_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_3_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar3,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_3_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_3_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar3,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_3_3.pack(padx=5, pady=2, expand=True, anchor="n")
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar3.get(), "c", valor)
+                                            )
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+        elif valor == 6:
+            if pregunta == 1:
+                label_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_1",
+                                            width = 910,
+                                            height = 240,
+                                            font = (font_1, 22),
+                                            text_color = "black",
+                                            fg_color="transparent",
+                                            )
+                label_pregunta_1.pack(padx=5, pady=2, expand=True, anchor="n")
+
+                imagen_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas, 
+                                        image = variables.imagen_1_exponencial,
+                                        width = 400,
+                                        height = 200,
+                                        text = ""
+                                        )
+                imagen_pregunta_1.pack(padx=2, pady=1, expand=True, anchor="center")
+
+                radiobar1 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_1_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar1,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_1_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar1,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_1_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar1,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_1_3.pack(padx=5, pady=2, expand=True, anchor="n")
+
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar1.get(), "c", valor)
+                                            )
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+
+            elif pregunta == 2:
+                label_pregunta_2 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_2",
+                                            width = 910,
+                                            height = 240,
+                                            )
+                
+                radiobar2 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_2_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar2,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_2_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar2,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_2_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar2,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_2_3.pack(padx=5, pady=2, expand=True, anchor="n")
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar2.get(), "c", valor)
+                                            )
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+
+            elif pregunta == 3:
+                label_pregunta_3 = ctk.CTkLabel(master = frame_scroll_preguntas,
+                                            text = "texto_3",
+                                            width = 910,
+                                            height = 240,
+                                            )
+                
+                radiobar3 = ctk.StringVar(master = frame_scroll_preguntas,
+                                            value = "other",
+                                            )
+                radio_3_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 1",
+                                            variable = radiobar3,
+                                            value = "a",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_3_1.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_3_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 2",
+                                            variable = radiobar3,
+                                            value = "b",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_3_2.pack(padx=5, pady=2, expand=True, anchor="n")
+            
+                radio_3_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
+                                            text = "Opción 3",
+                                            variable = radiobar3,
+                                            value = "c",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            )
+                radio_3_3.pack(padx=5, pady=2, expand=True, anchor="n")
+                buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
+                                            text = "Enviar",
+                                            font = (font_1, 18),
+                                            text_color = "black",
+                                            width = 200,
+                                            height = 40,
+                                            corner_radius = 32,
+                                            fg_color = "white",
+                                            hover_color = "light blue",
+                                            command = lambda: verificar_respuesta(radiobar3.get(), "c", valor)
+                                            )
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+
+
+
+    jugar_window.withdraw()
+        
 #--------------------------------------------frames------------------------------------------
 frame_principal = ctk.CTkFrame(master = root, 
                                         width = 1000, 
