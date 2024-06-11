@@ -3,6 +3,8 @@ import customtkinter as ctk
 from PIL import Image, ImageTk
 import variables
 from tkinter import messagebox as mb
+import main
+
 
 #----------------------------------ventanas---------------------------------------
 #VENTANA PRINCIPAL
@@ -733,19 +735,25 @@ def verificar_respuesta(valor, correcto, nivel):
     elif valor == correcto:
         variables.vidas += 1
         mb.showinfo("Correcto", "Respuesta correcta") 
+        variables.pregunta += 1
         preguntas(nivel)
     else:
         mb.showerror("Incorrecto", "Respuesta incorrecta")
+        variables.pregunta += 1
         preguntas(nivel)
     if variables.pregunta == 3 and variables.vidas == 0:
         mb.showwarning("cochino", "Cochino hp!")
         verificar_respuesta(0,1, nivel)
-    variables.pregunta += 1
+    elif variables.pregunta ==  3 and variables.vidas > 0:
+        main.main(variables.vidas)
+
+    
     
     
 
 
 def preguntas(valor):
+    main.main(variables.vidas)
     global preguntas_window
     pregunta = variables.pregunta
     if preguntas_window is not None:
@@ -833,7 +841,7 @@ def preguntas(valor):
                                             corner_radius = 32,
                                             fg_color = "white",
                                             hover_color = "light blue",
-                                            command = lambda: verificar_respuesta(radiobar1.get(), "c", valor)
+                                            command = lambda: verificar_respuesta(radiobar1.get(), "a", valor)
                                             )
                 
                 buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
@@ -884,7 +892,7 @@ def preguntas(valor):
                                             corner_radius = 32,
                                             fg_color = "white",
                                             hover_color = "light blue",
-                                            command = lambda: verificar_respuesta(radiobar2.get(), "c", valor)
+                                            command = lambda: verificar_respuesta(radiobar2.get(), "b", valor)
                                             )
             elif pregunta == 3:
                 label_pregunta_3 = ctk.CTkLabel(master = frame_scroll_preguntas,
