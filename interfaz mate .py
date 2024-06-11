@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+
 import matplotlib.pyplot as plt
 from tkinter import *
 import customtkinter as ctk
@@ -11,12 +11,6 @@ plt.close('all')
 import matplotlib
 matplotlib.use("TkAgg")
 
-from tkinter import messagebox as mb
-import main
-from matplotlib import pyplot as plt
-plt.close('all')
-import matplotlib
-matplotlib.use("TkAgg")
 
 
 #----------------------------------ventanas---------------------------------------

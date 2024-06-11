@@ -60,25 +60,42 @@ imagen_3_seno = ctk.CTkImage(light_image=Image.open("imagen_3_seno.png"),
                                    size = (400,250))
 #___________________________imagenes preguntas____________________________________
 
-imagen_pregunta_1_raiz == ctk.CTkImage(light_image=Image.open("imagen_1_raiz_cuadrada.png"), 
-                                dark_image=Image.open("imagen_1_raiz_cuadrada.png"),
+imagen_pregunta_1_raiz = ctk.CTkImage(light_image=Image.open("imagen_pregunta_1_raiz.png"), 
+                                dark_image=Image.open("imagen_pregunta_1_raiz.png"),
                                 size = (300,300))
 
-imagen_pregunta_2_raiz == ctk.CTkImage(light_image=Image.open("imagen_2_raiz_cuadrada.png"),
-                                dark_image=Image.open("imagen_2_raiz_cuadrada.png"),
+imagen_pregunta_2_raiz = ctk.CTkImage(light_image=Image.open("imagen_pregunta_2_raiz.png"),
+                                dark_image=Image.open("imagen_pregunta_2_raiz.png"),
                                 size = (300,300))
 
-imagen_pregunta_3_raiz == ctk.CTkImage(light_image=Image.open("imagen_3_raiz_cuadrada.png"),
-                                dark_image=Image.open("imagen_3_raiz_cuadrada.png"),
+imagen_pregunta_3_raiz = ctk.CTkImage(light_image=Image.open("imagen_pregunta_3_raiz.png"),
+                                dark_image=Image.open("imagen_pregunta_3_raiz.png"),
                                 size = (300,300))
 
-imagen_pregunta_2_seno == ctk.CTkImage(light_image=Image.open("imagen_pregunta_2_seno.png"),
+imagen_pregunta_2_seno = ctk.CTkImage(light_image=Image.open("imagen_pregunta_2_seno.png"),
                                 dark_image=Image.open("imagen_pregunta_2_seno.png"),
                                 size = (300,300))
 
-imagen_pregunta_3_seno == ctk.CTkImage(light_image=Image.open("imagen_pregunta_3_seno.png"),
+imagen_pregunta_3_seno = ctk.CTkImage(light_image=Image.open("imagen_pregunta_3_seno.png"),
                                 dark_image=Image.open("imagen_pregunta_3_seno.png"),
                                 size = (300,300))
+
+imagen_pregunta_1_exponencial = ctk.CTkImage(light_image=Image.open("imagen_pregunta_1_exponencial.png"),
+                                dark_image=Image.open("imagen_pregunta_1_exponencial.png"),
+                                size = (300,300))
+
+imagen_pregunta_2_exponencial = ctk.CTkImage(light_image=Image.open("imagen_pregunta_2_exponencial.png"),
+                                dark_image=Image.open("imagen_pregunta_2_exponencial.png"),
+                                size = (300,300))
+
+imagen_pregunta_1_logaritmica = ctk.CTkImage(light_image=Image.open("imagen_pregunta_1_logaritmica.png"),
+                                dark_image=Image.open("imagen_pregunta_1_logaritmica.png"),
+                                size = (300,300))
+
+imagen_pregunta_3_logaritmica = ctk.CTkImage(light_image=Image.open("imagen_pregunta_3_logaritmica.png"),
+                                dark_image=Image.open("imagen_pregunta_3_logaritmica.png"),
+                                size = (300,300))
+
 #____________________________________textos_________________________________________
 
 definicion_funcion ="""DEFINICIÓN DE UNA FUNCIÓN
@@ -500,24 +517,50 @@ opcion_2_3_exponencial= """A los 5 años"""
 opcion_3_3_exponencial = """A los 10 años"""
 
 #-----------------------------pregunta 1 logaritmica--------------------------
-pregunta_1_logaritmica = """1.	Halle los cortes de la función 
+pregunta_1_logaritmica = """1.	Hallar el dominio, el rango y el corte en Y 
 aqui imagen"""
-opcion_1_1_logaritmica= """Corte y: (0, e^2), corte x: (-e^2/3,0)"""
-opcion_2_1_logaritimica= """No tiene cortes"""
-opcion_3_1_logaritmica = """Corte y: (-e^2/3,0), corte x: (0, e^2)"""
+opcion_1_1_logaritmica= """Dominio: R-{-2,2}, Rango: R corte y: (0, log4)"""
+opcion_2_1_logaritimica= """Dominio: R-{4,-4}, Rango: R, corte y: (log4, 0)"""
+opcion_3_1_logaritmica = """Dominio: R-, Rango: R, corte y:  (log4, 0) """
 
 #-----------------------------pregunta 2 logaritmica--------------------------
-pregunta_2_logaritmica = """2.	Hallar la inversa de tanh x: 
-#aqui va imagen"""
-opcion_1_2_logaritmica= """No se puede calcular"""
-opcion_2_2_logaritmica= """(½)* (ln(1+x)/(1-x))"""
-opcion_3_2_logaritmica = """(ln(1+x)/(1-x))"""
+pregunta_2_logaritmica = """2.	Hallar la inversa de la función 2logx: """
+opcion_1_2_logaritmica= """No tiene por ser logarítmica"""
+opcion_2_2_logaritmica= """10^x"""
+opcion_3_2_logaritmica = """10^(x/2)"""
 
 #-----------------------------pregunta 3 logaritmica-----------------------
-pregunta_3_logaritmica = """3. La población futura de un pueblo se puede 
-aproximar mediante la fórmula y = 8000(1,4)^(0,2t), donde t es el número 
-de años transcurridos.  
-¿A los cuántos años la población será de 15680 habitantes??"""
-opcion_1_3_logaritmica= """Información insuficiente""" 
-opcion_2_3_logaritmica= """A los 5 años"""
-opcion_3_3_logaritmica = """A los 10 años"""
+pregunta_3_logaritmica = """3.	Una variedad de peces fue introducida en el 
+océano pacífico. El siguiente modelo predice en un tiempo t de meses cuántos 
+P peces hay:
+AQUI IMAGEN"""
+pregunta_3_logaritmica_p2 = """¿Cuántos peces habrá para 18 meses?"""
+opcion_1_3_logaritmica= """6400""" 
+opcion_2_3_logaritmica= """Información insuficiente"""
+opcion_3_3_logaritmica = """10000"""
+
+#-----------------------------pregunta 1 seno--------------------------
+pregunta_1_seno = """1.	Dominio y rango de la función sin(x) """
+opcion_1_1_seno= """Dominio: x > 0, rango: R"""
+opcion_2_1_seno= """Dominio: R, rango: R"""
+opcion_3_1_seno = """Dominio: R, rango: [-1, 1] """
+
+#-----------------------------pregunta 2 seno--------------------------
+pregunta_2_seno = """2.	Según la gráfica de la función sin x, 
+dicha función que simetría tiene.  
+#aqui va imagen"""
+opcion_1_2_seno= """Es par debido a que tiene simetría en el 
+eje Y"""
+opcion_2_2_seno= """Es impar porque tiene simetría con el origen"""
+opcion_3_2_seno = """Es impar porque tiene simetría con el eje Y"""
+
+#-----------------------------pregunta 3 seno--------------------------
+pregunta_3_seno = """Una Cometa se queda atascada en la rama más alta 
+de un árbol si la cuerda de la Cometa mide 25 m y forma un ángulo de 
+37° con el suelo, estime la altura del árbol encontrando la distancia 
+que hay entre la cometa y el suelo
+AQUI IMAGEN"""
+opcion_1_3_seno= """Datos insuficientes, falta un lado para 
+realizar el teorema de Pitágoras"""
+opcion_2_3_seno= """10.5m"""
+opcion_3_3_seno = """15m"""
