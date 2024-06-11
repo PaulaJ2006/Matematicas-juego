@@ -60,6 +60,66 @@ imagen_3_seno = ctk.CTkImage(light_image=Image.open("imagen_3_seno.png"),
                                    dark_image=Image.open("imagen_3_seno.png"),
                                    size = (400,250))
 
+
+
+vidas = 3
+pregunta = 1
+
+imagen = ctk.CTkImage(light_image=Image.open("descartes.png"), 
+                                dark_image=Image.open("descartes.png"),
+                                size = (300,300)
+                                )
+imagen_tipos_funciones = ctk.CTkImage(light_image=Image.open("tipos_funciones.png"), 
+                                dark_image=Image.open("tipos_funciones.png"),
+                                size = (800,600))
+
+funcion_inyectiva = ctk.CTkImage(light_image=Image.open("funcion_inyectiva.png"), 
+                                dark_image=Image.open("funcion_inyectiva.png"),
+                                size = (800,600))
+
+funcion_sobreyectiva = ctk.CTkImage(light_image=Image.open("funcion_sobreyectiva.png"),
+                                dark_image=Image.open("funcion_sobreyectiva.png"),
+                                size = (800,560))
+funcion_biyectiva = ctk.CTkImage(light_image=Image.open("funcion_biyectiva.png"),
+                                dark_image=Image.open("funcion_biyectiva.png"),
+                                size = (800,560))
+metodo_resolucion_cuadratica = ctk.CTkImage(light_image=Image.open("metodo_resolucion_cuadratica.png"),
+                                dark_image=Image.open("metodo_resolucion_cuadratica.png"),
+                                size = (400,250))
+imagen_2_cuadratica = ctk.CTkImage(light_image=Image.open("imagen_2_cuadratica.png"), 
+                                   dark_image=Image.open("imagen_2_cuadratica.png"),
+                                   size = (400,250))
+imagen_3_cuadratica = ctk.CTkImage(light_image=Image.open("imagen_3_cuadratica.png"), 
+                                   dark_image=Image.open("imagen_3_cuadratica.png"),
+                                   size = (400,250))
+imagen_4_cuadratica = ctk.CTkImage(light_image=Image.open("imagen_4_cuadratica.png"), 
+                                   dark_image=Image.open("imagen_4_cuadratica.png"),
+                                   size = (400,250))
+imagen_1_raiz = ctk.CTkImage(light_image=Image.open("imagen_1_raiz.png"), 
+                                   dark_image=Image.open("imagen_1_raiz.png"),
+                                   size = (400,250))
+imagen_2_raiz = ctk.CTkImage(light_image=Image.open("imagen_2_raiz.png"), 
+                                   dark_image=Image.open("imagen_2_raiz.png"),
+                                   size = (400,250))
+imagen_3_raiz = ctk.CTkImage(light_image=Image.open("imagen_3_raiz.png"), 
+                                   dark_image=Image.open("imagen_3_raiz.png"),
+                                   size = (400,250))
+imagen_1_exponencial = ctk.CTkImage(light_image=Image.open("imagen_1_exponencial.png"), 
+                                   dark_image=Image.open("imagen_1_exponencial.png"),
+                                   size = (400,250))
+imagen_1_logaritmica = ctk.CTkImage(light_image=Image.open("imagen_1_logaritmica.png"), 
+                                   dark_image=Image.open("imagen_1_logaritmica.png"),
+                                   size = (400,250))
+imagen_1_seno = ctk.CTkImage(light_image=Image.open("imagen_1_seno.png"), 
+                                   dark_image=Image.open("imagen_1_seno.png"),
+                                   size = (400,250))
+imagen_2_seno = ctk.CTkImage(light_image=Image.open("imagen_2_seno.png"), 
+                                   dark_image=Image.open("imagen_2_seno.png"),
+                                   size = (400,250))
+imagen_3_seno = ctk.CTkImage(light_image=Image.open("imagen_3_seno.png"), 
+                                   dark_image=Image.open("imagen_3_seno.png"),
+                                   size = (400,250))
+
 definicion_funcion ="""DEFINICIÓN DE UNA FUNCIÓN
 
 La función de un conjunto X en un conjunto Y es una correspondencia que le asigna 
@@ -109,6 +169,7 @@ Por ejemplo, son funciones lineales:
 2)g(x) = -3x + 7
 
 
+
 ECUACIONES:
 1)Canónica: y = mx + b
 2)Ecuación punto pendiente: y – y1 = m(x – x1)
@@ -129,6 +190,7 @@ de los elementos del dominio es proporcional al incremento
 de los valores en el rango, siempre y cuando la pendiente no sea igual a 0.
 
 
+
 ¿QUÉ SE NECESITA PARA GRAFICARLA?
 1)	Dos puntos en el plano cartesiano.
 2)	Un punto en el plano cartesiano y la pendiente.
@@ -141,6 +203,7 @@ en la que el término de grado más alto es de segundo grado (2).
 Por ejemplo, son funciones cuadráticas:
 f(x) = x^2+x+2
 f(x) = 2x^2++4x+8
+
 
 
 ECUACIONES:
@@ -171,6 +234,7 @@ valor x que es la abscisa del vértice. La fórmula del valor x mencionado,
 conocida como Ecuación del Eje de Simetría es:
 
 x=  (-b)/2a
+
 
 
 
@@ -206,11 +270,15 @@ Rango: Formado por los y ≥ 0
 Punto de corte con el eje x: x = 0
 
 
+
 El gráfico de la función raíz cuadrada es:
 """
 raiz_cuadrada_2 = """A este gráfico se pueden aplicar traslaciones horizontales, hacia 
 la derecha si hacemos x − 1 y hacia la izquierda si hacemos x + 1. También se pueden 
 aplicar traslaciones verticales, se desplaza hacia arriba si se suman constantes positivas, 
+mientras que se desplaza hacia abajo si se suman constantes negativas."""
+
+
 mientras que se desplaza hacia abajo si se suman constantes negativas."""
 
 
@@ -236,6 +304,7 @@ El dominio de una función exponencial son todos los números reales o, dicho co
 palabras, una función exponencial existe por cualquier valor de x.
 
 
+
 La función solo toma valores positivos, por lo tanto, el rango de una función exponencial 
 son todos los números reales positivos.
 
@@ -256,10 +325,13 @@ exponencial_2 = """La función por la derecha sigue creciendo hasta el infinito,
 izquierda va decreciendo, pero nunca llega a 0. Aunque se acerca mucho, nunca lo llega a tocar. 
 Eso quiere decir que la recta y=0 (el eje de las abscisas) es una asíntota horizontal."""
 
+Eso quiere decir que la recta y=0 (el eje de las abscisas) es una asíntota horizontal."""
+
 
 logaritmica_1 = """FUNCIÓN LOGARÍTMICA
 Una función logarítmica es aquella que se expresa como log_a⁡x, siendo a la base de esta función, 
 que ha de ser positiva y distinta de 1.
+
 
 
 Ejemplos: 
@@ -295,6 +367,7 @@ La función logarítmica, puede ser cambiada en k unidades verticalmente y h uni
 horizontalmente con la ecuación y = log b ( x + h ) + k .
 
 
+
 CAMBIO VERTICAL
 Si k > 0, la gráfica se desplazaría k unidades hacia arriba.
 Si k < 0, la gráfica se desplazaría k unidades hacia abajo.
@@ -310,6 +383,7 @@ razón entre el cateto opuesto y la hipotenusa de un triángulo rectángulo
 (triángulo con un ángulo recto).
 
 Ejemplos:
+
 
 〖F(x)= 2sin〗⁡x
 〖F(x)= sin〗⁡x
@@ -347,9 +421,13 @@ Además, los valores máximos y mínimos entre los que oscila depende de su ampl
 Por lo tanto, dos rasgos que determinan la función seno son su periodo y su amplitud: 
 Este tipo de función trigonométrica tiene un único punto de corte con el eje de las ordenadas 
 (eje Y) en el punto (0,0).
+Este tipo de función trigonométrica tiene un único punto de corte con el eje de las ordenadas 
+(eje Y) en el punto (0,0).
 
 El periodo de la función seno es la distancia entre dos puntos en los que se repite la gráfica.
 
 La amplitud de la función seno es equivalente al coeficiente de delante del término seno.
 """
+
+
 

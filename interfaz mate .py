@@ -1,8 +1,16 @@
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 from tkinter import *
 import customtkinter as ctk
 from PIL import Image, ImageTk
 import variables
+from tkinter import messagebox as mb
+import main
+from matplotlib import pyplot as plt
+plt.close('all')
+import matplotlib
+matplotlib.use("TkAgg")
+
 from tkinter import messagebox as mb
 import main
 from matplotlib import pyplot as plt
@@ -37,6 +45,23 @@ frame_imagen = ctk.CTkFrame(master = frame_principal,
                                     border_color = "black",
                                     border_width = 2
                                     )
+#--------------------------------------------frames------------------------------------------
+frame_principal = ctk.CTkFrame(master = root, 
+                                        width = 1000, 
+                                        height = 600, 
+                                        corner_radius = 10, 
+                                        fg_color = "#D6EAF8", 
+                                        border_color = "white", 
+                                        border_width = 2
+                                        )
+frame_imagen = ctk.CTkFrame(master = frame_principal,
+                                    width = 400,
+                                    height = 400,
+                                    corner_radius = 10,
+                                    fg_color = "white",
+                                    border_color = "black",
+                                    border_width = 2
+                                    )
 
 #----------------------------------variables-------------------------------------
 font_1 = ctk.CTkFont(family="Inherit", size=26, weight="bold")
@@ -46,6 +71,24 @@ info_window = None
 jugar_window = None
 ajustes_window = None
 aprender_window = None
+preguntas_window = None
+
+#----------------------------------------------labels--------------------------------------------
+titulo = ctk.CTkLabel(master = frame_imagen, 
+                                text = "DESCARTICO", 
+                                font = font_2, 
+                                text_color = "red",
+                                width = 200,
+                                height = 90
+                                )
+
+imagen_ = ctk.CTkLabel(master = frame_imagen, 
+                                image = variables.imagen,
+                                width = 200,
+                                height = 200
+                                )
+
+
 preguntas_window = None
 
 #----------------------------------------------labels--------------------------------------------
@@ -332,6 +375,7 @@ Función Seno""",
                             fg_color="#A6FFCD", 
                             hover_color="#A6FFED",
                             command=lambda: preguntas(1)
+                            command=lambda: preguntas(1)
                             )
         boton_jugar_nivel_1.place(relx=0.5, rely=0.5, anchor="center")
 
@@ -481,6 +525,7 @@ def cerrar_jugar():
         jugar_window.destroy()
         jugar_window = None
     root.deiconify()
+
 
 
 def aprender(valor):
@@ -1838,6 +1883,7 @@ boton_jugar = ctk.CTkButton(master = frame_principal,
                                     fg_color="white",
                                     hover_color= "#FBF4B8",
                                     command= jugar
+                                    )
                                     )
 
 #----------------------------Posicionamiento--------------------------------
