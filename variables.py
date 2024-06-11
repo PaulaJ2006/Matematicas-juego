@@ -5,6 +5,61 @@ from PIL import Image, ImageTk
 vidas = 3
 pregunta = 1
 
+imagen = ctk.CTkImage(light_image=Image.open("descartes.png"), 
+                                dark_image=Image.open("descartes.png"),
+                                size = (300,300)
+                                )
+imagen_tipos_funciones = ctk.CTkImage(light_image=Image.open("tipos_funciones.png"), 
+                                dark_image=Image.open("tipos_funciones.png"),
+                                size = (800,600))
+
+funcion_inyectiva = ctk.CTkImage(light_image=Image.open("funcion_inyectiva.png"), 
+                                dark_image=Image.open("funcion_inyectiva.png"),
+                                size = (800,600))
+
+funcion_sobreyectiva = ctk.CTkImage(light_image=Image.open("funcion_sobreyectiva.png"),
+                                dark_image=Image.open("funcion_sobreyectiva.png"),
+                                size = (800,560))
+funcion_biyectiva = ctk.CTkImage(light_image=Image.open("funcion_biyectiva.png"),
+                                dark_image=Image.open("funcion_biyectiva.png"),
+                                size = (800,560))
+metodo_resolucion_cuadratica = ctk.CTkImage(light_image=Image.open("metodo_resolucion_cuadratica.png"),
+                                dark_image=Image.open("metodo_resolucion_cuadratica.png"),
+                                size = (400,250))
+imagen_2_cuadratica = ctk.CTkImage(light_image=Image.open("imagen_2_cuadratica.png"), 
+                                   dark_image=Image.open("imagen_2_cuadratica.png"),
+                                   size = (400,250))
+imagen_3_cuadratica = ctk.CTkImage(light_image=Image.open("imagen_3_cuadratica.png"), 
+                                   dark_image=Image.open("imagen_3_cuadratica.png"),
+                                   size = (400,250))
+imagen_4_cuadratica = ctk.CTkImage(light_image=Image.open("imagen_4_cuadratica.png"), 
+                                   dark_image=Image.open("imagen_4_cuadratica.png"),
+                                   size = (400,250))
+imagen_1_raiz = ctk.CTkImage(light_image=Image.open("imagen_1_raiz.png"), 
+                                   dark_image=Image.open("imagen_1_raiz.png"),
+                                   size = (400,250))
+imagen_2_raiz = ctk.CTkImage(light_image=Image.open("imagen_2_raiz.png"), 
+                                   dark_image=Image.open("imagen_2_raiz.png"),
+                                   size = (400,250))
+imagen_3_raiz = ctk.CTkImage(light_image=Image.open("imagen_3_raiz.png"), 
+                                   dark_image=Image.open("imagen_3_raiz.png"),
+                                   size = (400,250))
+imagen_1_exponencial = ctk.CTkImage(light_image=Image.open("imagen_1_exponencial.png"), 
+                                   dark_image=Image.open("imagen_1_exponencial.png"),
+                                   size = (400,250))
+imagen_1_logaritmica = ctk.CTkImage(light_image=Image.open("imagen_1_logaritmica.png"), 
+                                   dark_image=Image.open("imagen_1_logaritmica.png"),
+                                   size = (400,250))
+imagen_1_seno = ctk.CTkImage(light_image=Image.open("imagen_1_seno.png"), 
+                                   dark_image=Image.open("imagen_1_seno.png"),
+                                   size = (400,250))
+imagen_2_seno = ctk.CTkImage(light_image=Image.open("imagen_2_seno.png"), 
+                                   dark_image=Image.open("imagen_2_seno.png"),
+                                   size = (400,250))
+imagen_3_seno = ctk.CTkImage(light_image=Image.open("imagen_3_seno.png"), 
+                                   dark_image=Image.open("imagen_3_seno.png"),
+                                   size = (400,250))
+
 definicion_funcion ="""DEFINICIÓN DE UNA FUNCIÓN
 
 La función de un conjunto X en un conjunto Y es una correspondencia que le asigna 
@@ -297,57 +352,4 @@ El periodo de la función seno es la distancia entre dos puntos en los que se re
 
 La amplitud de la función seno es equivalente al coeficiente de delante del término seno.
 """
-imagen = ctk.CTkImage(light_image=Image.open("descartes.png"), 
-                                dark_image=Image.open("descartes.png"),
-                                size = (300,300)
-                                )
-imagen_tipos_funciones = ctk.CTkImage(light_image=Image.open("tipos_funciones.png"), 
-                                dark_image=Image.open("tipos_funciones.png"),
-                                size = (800,600))
 
-funcion_inyectiva = ctk.CTkImage(light_image=Image.open("funcion_inyectiva.png"), 
-                                dark_image=Image.open("funcion_inyectiva.png"),
-                                size = (800,600))
-
-funcion_sobreyectiva = ctk.CTkImage(light_image=Image.open("funcion_sobreyectiva.png"),
-                                dark_image=Image.open("funcion_sobreyectiva.png"),
-                                size = (800,560))
-funcion_biyectiva = ctk.CTkImage(light_image=Image.open("funcion_biyectiva.png"),
-                                dark_image=Image.open("funcion_biyectiva.png"),
-                                size = (800,560))
-metodo_resolucion_cuadratica = ctk.CTkImage(light_image=Image.open("metodo_resolucion_cuadratica.png"),
-                                dark_image=Image.open("metodo_resolucion_cuadratica.png"),
-                                size = (400,250))
-imagen_2_cuadratica = ctk.CTkImage(light_image=Image.open("imagen_2_cuadratica.png"), 
-                                   dark_image=Image.open("imagen_2_cuadratica.png"),
-                                   size = (400,250))
-imagen_3_cuadratica = ctk.CTkImage(light_image=Image.open("imagen_3_cuadratica.png"), 
-                                   dark_image=Image.open("imagen_3_cuadratica.png"),
-                                   size = (400,250))
-imagen_4_cuadratica = ctk.CTkImage(light_image=Image.open("imagen_4_cuadratica.png"), 
-                                   dark_image=Image.open("imagen_4_cuadratica.png"),
-                                   size = (400,250))
-imagen_1_raiz = ctk.CTkImage(light_image=Image.open("imagen_1_raiz.png"), 
-                                   dark_image=Image.open("imagen_1_raiz.png"),
-                                   size = (400,250))
-imagen_2_raiz = ctk.CTkImage(light_image=Image.open("imagen_2_raiz.png"), 
-                                   dark_image=Image.open("imagen_2_raiz.png"),
-                                   size = (400,250))
-imagen_3_raiz = ctk.CTkImage(light_image=Image.open("imagen_3_raiz.png"), 
-                                   dark_image=Image.open("imagen_3_raiz.png"),
-                                   size = (400,250))
-imagen_1_exponencial = ctk.CTkImage(light_image=Image.open("imagen_1_exponencial.png"), 
-                                   dark_image=Image.open("imagen_1_exponencial.png"),
-                                   size = (400,250))
-imagen_1_logaritmica = ctk.CTkImage(light_image=Image.open("imagen_1_logaritmica.png"), 
-                                   dark_image=Image.open("imagen_1_logaritmica.png"),
-                                   size = (400,250))
-imagen_1_seno = ctk.CTkImage(light_image=Image.open("imagen_1_seno.png"), 
-                                   dark_image=Image.open("imagen_1_seno.png"),
-                                   size = (400,250))
-imagen_2_seno = ctk.CTkImage(light_image=Image.open("imagen_2_seno.png"), 
-                                   dark_image=Image.open("imagen_2_seno.png"),
-                                   size = (400,250))
-imagen_3_seno = ctk.CTkImage(light_image=Image.open("imagen_3_seno.png"), 
-                                   dark_image=Image.open("imagen_3_seno.png"),
-                                   size = (400,250))
