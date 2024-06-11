@@ -7,7 +7,7 @@ import random
 def main(vidas):
     global enemigos, jumpping, timeintheair, p
     ranxi,ranxf = -10,11 #coordenadas plano
-    xi, xf, yi, yf = 0, 1, 0, 1 #vértices cuadrado
+    xi, xf, yi, yf = 0, 1, 0, -1 #vértices cuadrado
     posx, posf = 8,9 #coordenadas triangulo
     enemigos = [[posx,posf]]
     timeintheair = 0
@@ -16,8 +16,8 @@ def main(vidas):
     actualizar_posicion(xi,xf,yi,yf, ranxi, ranxf, posx, posf, vidas)
     plt.show()
  
-def funcion_lineal(x, m, b, p):
-    return m * (x-p) + b
+def funcion_exponencial(x,t):
+    return ((0.5 **(x-p+7)) + t)*-1
 
 def dibujar_plano(ranxi, ranxf):
     #Se definen arreglos de valores que van desde -10 hasta 10 
@@ -54,19 +54,19 @@ def dibujarenemigos(amount, posx, posf, xi, xf):
 
     global enemigos
     if amount == 1:
-        posx = xi + 10
-        posf = xf + 10
-        if posx - enemigos[-1][0] > 10:
+        posx = xi + 7
+        posf = xf + 7
+        if posx - enemigos[-1][0] > 7:
             enemigos.append([posx,posf])
         
     else:
-        posx = xi + 10
-        posf = xf + 10
-        if posx - enemigos[-1][0] > 10:
+        posx = xi + 7
+        posf = xf + 7
+        if posx - enemigos[-1][0] > 7:
 
             enemigos.append([posx,posf])
-            posx = xi + 11
-            posf = xf + 11
+            posx = xi + 8
+            posf = xf + 8
             enemigos.append([posx,posf])
     
     for i in range(len (enemigos)):
@@ -78,7 +78,7 @@ def dibujarenemigos(amount, posx, posf, xi, xf):
         y_values = []
         y_values.append(0)
         y_values.append(0)
-        y_values.append(1)
+        y_values.append(-1)
         y_values.append(0)
         plt.plot(x_values, y_values, color="yellow")
 
@@ -101,14 +101,14 @@ def actualizar_posicion(xi,xf, yi,yf, ranxi, ranxf, posx, posf, vidas):
         plt.text(ranxi+2, 8, 'Vidas: ' + str(vidas), color="black", fontsize=12    )
         dibujar_plano(ranxi, ranxf)
         if jumpping and yi == 0:          
-            yi += 2.2
-            yf += 2.2
+            yi -= 2.2
+            yf -= 2.2
             jumpping = False
-        if yi > 0:
+        if yi < 0:
             timeintheair += 1
         if timeintheair > 3:
-            yi -= 2.2
-            yf -= 2.2 
+            yi += 2.2
+            yf += 2.2 
             jumpping = False
             timeintheair = 0
         dibujar_personaje(xi, xf, yi, yf, 'red')  # Dibuja el cuadrado
@@ -118,30 +118,29 @@ def actualizar_posicion(xi,xf, yi,yf, ranxi, ranxf, posx, posf, vidas):
             vidas -= 1
         if enemigos[-1][0] == xi and enemigos[-1][1] == xf and yi == 0 and vidas == 0:
             plt.text(ranxi+2, 8, 'Vidas: ' + str(vidas), color="black", fontsize=12    )
-            p += 3
-            x_valuesfunction = np.arange(ranxi, ranxf, 1)
-            y_valuesfunction = funcion_lineal(x_valuesfunction, 2, 5, p)
+            p += 8
+            x_valuesfunction = np.linspace(ranxi, ranxf, 400)
+            y_valuesfunction = funcion_exponencial(x_valuesfunction, -1)
             plt.plot(x_valuesfunction, y_valuesfunction, color="green",)    
             plt.text(ranxi + 10, -10, 'Puntaje: ' + str(p), color="brown", fontsize=12    )  
-            plt.text(p, 4, f"2(x-{p})+5", color="brown", fontsize=12) 
-            plt.text(p+3       , 6, 'm=2, b=5: ', color="purple", fontsize=12)
+            plt.text(p-3, 4, f"-0.5^(x-{p})-3", color="brown", fontsize=12) 
             vidas -= 1
             gameover()
             break
         else:
             p += 1
-            x_valuesfunction = np.arange(ranxi, ranxf, 1)
-            y_valuesfunction = funcion_lineal(x_valuesfunction, 2, 5, p)
+            x_valuesfunction = np.linspace(ranxi, ranxf, 400)
+            y_valuesfunction = funcion_exponencial(x_valuesfunction, 2)
             plt.plot(x_valuesfunction, y_valuesfunction, color="green",) 
             plt.text(ranxi + 10, -10, 'Puntaje: ' + str(p), color="brown", fontsize=12)  
-            plt.text(p, 4, f"2(x-{p})+5", color="brown", fontsize=12) 
-            plt.text(p+3, 6, 'm=2, b=5: ', color="purple", fontsize=12)
+            plt.text(p, 4, f"-0.5^(x-{p})+2", color="brown", fontsize=12)
         plt.draw()  # Actualiza la figura
         plt.pause(0.1)  # Pausa para crear la animación
         xi += 1  # Mueve el cuadrado hacia la derecha
         xf += 1  # Mueve el cuadrado hacia la derecha
     plt.ioff()  # Desactiva el modo interactivo
     plt.show()  # Muestra la figura final  
+
 
 
 
