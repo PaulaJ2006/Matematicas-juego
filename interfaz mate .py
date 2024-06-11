@@ -375,7 +375,6 @@ Función Seno""",
                             fg_color="#A6FFCD", 
                             hover_color="#A6FFED",
                             command=lambda: preguntas(1)
-                            command=lambda: preguntas(1)
                             )
         boton_jugar_nivel_1.place(relx=0.5, rely=0.5, anchor="center")
 
@@ -1884,7 +1883,7 @@ boton_jugar = ctk.CTkButton(master = frame_principal,
                                     hover_color= "#FBF4B8",
                                     command= jugar
                                     )
-                                    )
+                                    
 
 #----------------------------Posicionamiento--------------------------------
 frame_principal.place(relx = 0.5, rely = 0.5, anchor="center")

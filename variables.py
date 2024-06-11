@@ -1,7 +1,6 @@
 import customtkinter as ctk
 from PIL import Image, ImageTk
 
-
 vidas = 3
 pregunta = 1
 
@@ -59,66 +58,28 @@ imagen_2_seno = ctk.CTkImage(light_image=Image.open("imagen_2_seno.png"),
 imagen_3_seno = ctk.CTkImage(light_image=Image.open("imagen_3_seno.png"), 
                                    dark_image=Image.open("imagen_3_seno.png"),
                                    size = (400,250))
+#___________________________imagenes preguntas____________________________________
 
+imagen_pregunta_1_raiz == ctk.CTkImage(light_image=Image.open("imagen_1_raiz_cuadrada.png"), 
+                                dark_image=Image.open("imagen_1_raiz_cuadrada.png"),
+                                size = (300,300))
 
+imagen_pregunta_2_raiz == ctk.CTkImage(light_image=Image.open("imagen_2_raiz_cuadrada.png"),
+                                dark_image=Image.open("imagen_2_raiz_cuadrada.png"),
+                                size = (300,300))
 
-vidas = 3
-pregunta = 1
+imagen_pregunta_3_raiz == ctk.CTkImage(light_image=Image.open("imagen_3_raiz_cuadrada.png"),
+                                dark_image=Image.open("imagen_3_raiz_cuadrada.png"),
+                                size = (300,300))
 
-imagen = ctk.CTkImage(light_image=Image.open("descartes.png"), 
-                                dark_image=Image.open("descartes.png"),
-                                size = (300,300)
-                                )
-imagen_tipos_funciones = ctk.CTkImage(light_image=Image.open("tipos_funciones.png"), 
-                                dark_image=Image.open("tipos_funciones.png"),
-                                size = (800,600))
+imagen_pregunta_2_seno == ctk.CTkImage(light_image=Image.open("imagen_pregunta_2_seno.png"),
+                                dark_image=Image.open("imagen_pregunta_2_seno.png"),
+                                size = (300,300))
 
-funcion_inyectiva = ctk.CTkImage(light_image=Image.open("funcion_inyectiva.png"), 
-                                dark_image=Image.open("funcion_inyectiva.png"),
-                                size = (800,600))
-
-funcion_sobreyectiva = ctk.CTkImage(light_image=Image.open("funcion_sobreyectiva.png"),
-                                dark_image=Image.open("funcion_sobreyectiva.png"),
-                                size = (800,560))
-funcion_biyectiva = ctk.CTkImage(light_image=Image.open("funcion_biyectiva.png"),
-                                dark_image=Image.open("funcion_biyectiva.png"),
-                                size = (800,560))
-metodo_resolucion_cuadratica = ctk.CTkImage(light_image=Image.open("metodo_resolucion_cuadratica.png"),
-                                dark_image=Image.open("metodo_resolucion_cuadratica.png"),
-                                size = (400,250))
-imagen_2_cuadratica = ctk.CTkImage(light_image=Image.open("imagen_2_cuadratica.png"), 
-                                   dark_image=Image.open("imagen_2_cuadratica.png"),
-                                   size = (400,250))
-imagen_3_cuadratica = ctk.CTkImage(light_image=Image.open("imagen_3_cuadratica.png"), 
-                                   dark_image=Image.open("imagen_3_cuadratica.png"),
-                                   size = (400,250))
-imagen_4_cuadratica = ctk.CTkImage(light_image=Image.open("imagen_4_cuadratica.png"), 
-                                   dark_image=Image.open("imagen_4_cuadratica.png"),
-                                   size = (400,250))
-imagen_1_raiz = ctk.CTkImage(light_image=Image.open("imagen_1_raiz.png"), 
-                                   dark_image=Image.open("imagen_1_raiz.png"),
-                                   size = (400,250))
-imagen_2_raiz = ctk.CTkImage(light_image=Image.open("imagen_2_raiz.png"), 
-                                   dark_image=Image.open("imagen_2_raiz.png"),
-                                   size = (400,250))
-imagen_3_raiz = ctk.CTkImage(light_image=Image.open("imagen_3_raiz.png"), 
-                                   dark_image=Image.open("imagen_3_raiz.png"),
-                                   size = (400,250))
-imagen_1_exponencial = ctk.CTkImage(light_image=Image.open("imagen_1_exponencial.png"), 
-                                   dark_image=Image.open("imagen_1_exponencial.png"),
-                                   size = (400,250))
-imagen_1_logaritmica = ctk.CTkImage(light_image=Image.open("imagen_1_logaritmica.png"), 
-                                   dark_image=Image.open("imagen_1_logaritmica.png"),
-                                   size = (400,250))
-imagen_1_seno = ctk.CTkImage(light_image=Image.open("imagen_1_seno.png"), 
-                                   dark_image=Image.open("imagen_1_seno.png"),
-                                   size = (400,250))
-imagen_2_seno = ctk.CTkImage(light_image=Image.open("imagen_2_seno.png"), 
-                                   dark_image=Image.open("imagen_2_seno.png"),
-                                   size = (400,250))
-imagen_3_seno = ctk.CTkImage(light_image=Image.open("imagen_3_seno.png"), 
-                                   dark_image=Image.open("imagen_3_seno.png"),
-                                   size = (400,250))
+imagen_pregunta_3_seno == ctk.CTkImage(light_image=Image.open("imagen_pregunta_3_seno.png"),
+                                dark_image=Image.open("imagen_pregunta_3_seno.png"),
+                                size = (300,300))
+#____________________________________textos_________________________________________
 
 definicion_funcion ="""DEFINICIÓN DE UNA FUNCIÓN
 
@@ -169,7 +130,6 @@ Por ejemplo, son funciones lineales:
 2)g(x) = -3x + 7
 
 
-
 ECUACIONES:
 1)Canónica: y = mx + b
 2)Ecuación punto pendiente: y – y1 = m(x – x1)
@@ -195,6 +155,7 @@ de los valores en el rango, siempre y cuando la pendiente no sea igual a 0.
 1)	Dos puntos en el plano cartesiano.
 2)	Un punto en el plano cartesiano y la pendiente.
 """
+
 cuadratica_1 = """FUNCIÓN CUADRÁTICA
 
 En álgebra, una función cuadrática es una función polinómica con una o más variables
@@ -253,6 +214,7 @@ POSEE INTERSECCIONES CON EL EJE x
 Algebraicamente, se puede determinar rápidamente si una función tiene, o no,
 intersecciones con el eje x. Para ello, basta analizar el signo del DISCRIMINANTE.
 """
+
 raiz_cuadrada_1 = """FUNCIÓN RAÍZ CUADRADA
 
 La función raíz cuadrada está dada por la ecuación f(x)= √x, y solo tiene sentido 
@@ -273,19 +235,19 @@ Punto de corte con el eje x: x = 0
 
 El gráfico de la función raíz cuadrada es:
 """
+
 raiz_cuadrada_2 = """A este gráfico se pueden aplicar traslaciones horizontales, hacia 
 la derecha si hacemos x − 1 y hacia la izquierda si hacemos x + 1. También se pueden 
 aplicar traslaciones verticales, se desplaza hacia arriba si se suman constantes positivas, 
-mientras que se desplaza hacia abajo si se suman constantes negativas."""
-
-
-mientras que se desplaza hacia abajo si se suman constantes negativas."""
-
+mientras que se desplaza hacia abajo si se suman constantes negativas.
+"""
 
 raiz_cuadrada_3 = """Si se multiplica la función por una constante negativa, la función raíz 
 cuadrada se refleja con respecto al eje 𝑥."""
 
-exponencial_1 = """FUNCIÓN EXPONENCIAL
+exponencial_1 = """
+
+FUNCIÓN EXPONENCIAL
 
 Las funciones exponenciales son aquellas que tienen la variable independiente x en el exponente 
 de una potencia. Es decir, son de la siguiente forma:
@@ -319,11 +281,11 @@ La inversa de la función exponencial es la función logarítmica. Por tanto, la
 de una función exponencial y una función logarítmica son simétricas respecto de la recta 
 y=x si ambas poseen la misma base.
 
-GRÁFICA
-"""
+GRÁFICA"""
+
 exponencial_2 = """La función por la derecha sigue creciendo hasta el infinito, en cambio, la función por la 
 izquierda va decreciendo, pero nunca llega a 0. Aunque se acerca mucho, nunca lo llega a tocar. 
-Eso quiere decir que la recta y=0 (el eje de las abscisas) es una asíntota horizontal."""
+Eso quiere decir que la recta y=0 (el eje de las abscisas) es una asíntota horizontal.
 
 Eso quiere decir que la recta y=0 (el eje de las abscisas) es una asíntota horizontal."""
 
@@ -376,6 +338,7 @@ CAMBIO HORIZONTAL
 Si h > 0, la gráfica se desplazaría h unidades a la izquierda.
 Si h < 0, la gráfica se desplazaría h unidades a la derecha.
 """
+
 seno_1  = """FUNCIÓN SENO
 
 La función seno de un ángulo α es una función trigonométrica cuya fórmula se define como la 
@@ -428,6 +391,133 @@ El periodo de la función seno es la distancia entre dos puntos en los que se re
 
 La amplitud de la función seno es equivalente al coeficiente de delante del término seno.
 """
+#------------------------------pregunta 1 lineal--------------------------------
+pregunta_1_lineal = """1. Halle la pendiente y el intersecto de la recta: ax + by + cc =  0"""
+opcion_1_lineal = """Pendiente = a, intersecto = cPendiente = a, intersecto = c"""
+opcion_2_lineal = """Pendiente = -a/b, intersecto = -c/b"""
+opcion_3_lineal = """Pendiente = a/b, intersecto = c/b"""
 
+#------------------------------pregunta 2 lineal--------------------------------
+pregunta_2_lineal = """2. Un recipiente vacío comienza a llenarse con agua a ritmo constante.
+Al cabo de un minuto la altura del nivel del agua es de 3cm. A los dos minutos, de 6cm, y así,
+sucesivamente.
+Determine la función que representa la altura del agua en función del tiempo x:"""
 
+opcion_1_2_lineal = """y = 3x """
+opcion_2_2_lineal = """y = 3x-2"""
+opcion_3_2_lineal = """Datos insuficientes""" 
 
+#------------------------------pregunta 3 lineal--------------------------------
+pregunta_3_lineal = """3. Antonio va a comprarse un teléfono móvil y está estudiando la oferta de dos 
+compañías distintas: La compañía A le ofrece pagar 0,2$ por el establecimiento de la llamada y 0,15$ 
+por cada minuto de llamada. La compañía B le ofrece pagar 0,5$ por el establecimiento de la llamada y 
+0,05$ por cada minuto de llamada. Calcular cuándo es más recomendable una compañía u otra en función 
+del tiempo de duración de una llamada, e incluso cuando las dos tienen el mismo coste:
+"""
+opcion_1_3_lineal = """guales con 2 minutos, con menos de 2 minutos conviene A, con más de 2 minutos 
+conviene B"""
+opcion_2_3_lineal = """Iguales con 4 minutos, con menos de 4 minutos conviene A, con más de 2 minutos 
+conviene B"""
+opcion_3_3_lineal = """guales con 3 minutos, con menos de 3 minutos conviene A, con más de 3 minutos 
+conviene B""" 
+
+#------------------------------pregunta 1 cuadratica--------------------------------
+
+pregunta_1_cuadratica = """1. Determinar dominio, rango y cortes de la función: 
+3x^2 - 18x + 10"""
+opcion_1_cuadratica = """A)	Dominio: R, Rango: y > -17, Corte y: (0, -10), 
+corte x : (9+(51)^(1/2))/ 3),0)"""
+opcion_2_cuadratica = """B)	Dominio: R, Rango: y < -17, Corte y: (10, 0), corte x: no tiene"""
+opcion_3_cuadratica = """C)	Dominio: R, Rango: y > -17, Corte y: (0, 10), 
+Cortes x: (9+(51)^(1/2))/ 3),0) y (9+-(51)^(1/2))/ 3),0)"""
+
+#------------------------------pregunta 2 cuadratica--------------------------------
+
+pregunta_2_cuadratica = """2. En un medio de cultivo se introdujeron 500 bacterias que comenzaron a 
+reproducirse al cabo de cierto tiempo se modificó el medio y el número de bacterias comenzó a 
+disminuir. Se supone que la cantidad de bacterias, al cabo de x minutos, está dada por la fórmula:
+y = -x^2 + 40X + 500
+
+Determinar en cuánto tiempo se alcanzó la población máxima y cuál fue dicha cantidad:"""
+opcion_1_2_cuadratica = """Tiempo: 40 minutos, cantidad  de bacterias = 3700"""
+opcion_2_2_cuadratica = """Tiempo: 20 minutos, cantidad de  bacterias = 900"""
+opcion_3_2_cuadratica = """No se puede calcular"""
+
+#------------------------------pregunta 3 cuadratica--------------------------------
+
+pregunta_3_cuadratica = """
+3. En un medio de cultivo se introdujeron 500 bacterias que comenzaron a reproducirse
+al cabo de cierto tiempo se modificó el medio y el número de bacterias comenzó a disminuir.
+Se supone que la cantidad de bacterias, al cabo de x minutos, está dada por la fórmula: 
+y = -x^2 + 40X + 500
+Se extingue la población de bacterias, cuándo """
+
+opcion_1_3_cuadratica = """Sí, a los -10 minutos y a los 50 minutos"""
+opcion_2_3_cuadratica = """No se extingue, dicha población solo crece"""
+opcion_3_3_cuadratica = """Sí, a los 50 minutos."""
+
+#------------------------------pregunta 1 raiz--------------------------------
+pregunta_1_raiz = """1.	Hallar dominio y corte con eje x de la función.
+aqui imagen"""
+opcion_1_1_raiz = """Dominio: -1<x<0  or x>0, corte x: (-1,0)"""
+opcion_2_1_raiz = """Dominio:  X>-1, corte x: (0,*-1)"""
+opcion_3_1_raiz = """Dominio:  R-{0}, corte x: (0,*-1)"""
+
+#------------------------------pregunta 2 raiz--------------------------------
+pregunta_2_raiz = """2.	Hallar la inversa de la función:
+aqui imagen"""
+opcion_1_2_raiz = """No tiene inversa"""
+opcion_2_2_raiz = """(1 + y) / (y-1)"""
+opcion_3_2_raiz = """(1+y^2)/(y^2-1)"""
+
+#------------------------------pregunta 3 raiz--------------------------------
+pregunta_3_raiz = """3.	Encontrar el área de la cometa en función de x
+aqui imagen"""
+opcion_1_3_raiz = """No se puede"""
+opcion_2_3_raiz = """x( (25-x^2)^(1/2) + (100-x^2)^(1/2))"""
+opcion_3_3_raiz = """x((5-x^2)^(1/2) + (10-x^2)^(1/2))"""
+#-----------------------------pregunta 1 exponencial--------------------------
+pregunta_1_exponencial = """1.	Halle los cortes de la función 
+aqui imagen"""
+opcion_1_1_exponencial= """Corte y: (0, e^2), corte x: (-e^2/3,0)"""
+opcion_2_1_exponencial= """No tiene cortes"""
+opcion_3_1_exponencial = """Corte y: (-e^2/3,0), corte x: (0, e^2)"""
+
+#-----------------------------pregunta 2 exponencial--------------------------
+pregunta_2_exponencial = """2.	Hallar la inversa de tanh x: 
+#aqui va imagen"""
+opcion_1_2_exponencial= """No se puede calcular"""
+opcion_2_2_exponencial= """(½)* (ln(1+x)/(1-x))"""
+opcion_3_2_exponencial = """(ln(1+x)/(1-x))"""
+
+#-----------------------------pregunta 3 exponencial--------------------------
+pregunta_3_exponencial = """3. La población futura de un pueblo se puede 
+aproximar mediante la fórmula y = 8000(1,4)^(0,2t), donde t es el número 
+de años transcurridos.  
+¿A los cuántos años la población será de 15680 habitantes??"""
+opcion_1_3_exponencial= """Información insuficiente"""
+opcion_2_3_exponencial= """A los 5 años"""
+opcion_3_3_exponencial = """A los 10 años"""
+
+#-----------------------------pregunta 1 logaritmica--------------------------
+pregunta_1_logaritmica = """1.	Halle los cortes de la función 
+aqui imagen"""
+opcion_1_1_logaritmica= """Corte y: (0, e^2), corte x: (-e^2/3,0)"""
+opcion_2_1_logaritimica= """No tiene cortes"""
+opcion_3_1_logaritmica = """Corte y: (-e^2/3,0), corte x: (0, e^2)"""
+
+#-----------------------------pregunta 2 logaritmica--------------------------
+pregunta_2_logaritmica = """2.	Hallar la inversa de tanh x: 
+#aqui va imagen"""
+opcion_1_2_logaritmica= """No se puede calcular"""
+opcion_2_2_logaritmica= """(½)* (ln(1+x)/(1-x))"""
+opcion_3_2_logaritmica = """(ln(1+x)/(1-x))"""
+
+#-----------------------------pregunta 3 logaritmica-----------------------
+pregunta_3_logaritmica = """3. La población futura de un pueblo se puede 
+aproximar mediante la fórmula y = 8000(1,4)^(0,2t), donde t es el número 
+de años transcurridos.  
+¿A los cuántos años la población será de 15680 habitantes??"""
+opcion_1_3_logaritmica= """Información insuficiente""" 
+opcion_2_3_logaritmica= """A los 5 años"""
+opcion_3_3_logaritmica = """A los 10 años"""
