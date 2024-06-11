@@ -785,6 +785,7 @@ def cerrar_aprender():
 #---------------------------------VENTANA PREGUNTAS---------------------------------------
 def verificar_respuesta(valor, correcto, nivel):
     global preguntas_window
+    
     if valor == "other":
         mb.showerror("Error", "Debe seleccionar una opción")
 
@@ -856,27 +857,18 @@ def preguntas(valor):
 #--------------------------------------------pregunta 1-----------------------------------------
             if variables.pregunta == 1:
                 label_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                            text = "1.	Halle la pendiente y el intersecto de la recta",
+                                            text = variables.pregunta_1_lineal,
                                             font = (font_1, 22),
                                             text_color = "black",
                                             fg_color="transparent",
                                             )
                 label_pregunta_1.pack(padx=5, pady=2, expand=True, anchor="n")
-                imagenlineal = ctk.CTkImage(light_image=Image.open("linealimagen.png"), 
-                                dark_image=Image.open("linealimagen.png"),
-                                size = (300,200)
-                                )
-                imagen_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas, 
-                                        image = imagenlineal,
-                                        text = ""
-                                        )
-                imagen_pregunta_1.pack(padx=2, pady=1, expand=True, anchor="center")
 #--------------------------------------------opcion 1-----------------------------------------
                 radiobar1 = ctk.StringVar(master = frame_scroll_preguntas,
                                             value = "other",
                                             )
                 radio_1_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Pendiente = a, intersecto = c",
+                                            text = variables.opcion_1_lineal,
                                             variable = radiobar1,
                                             value = "a",
                                             font = (font_1, 18),
@@ -887,7 +879,7 @@ def preguntas(valor):
 #--------------------------------------------opcion 2-----------------------------------------
             
                 radio_1_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Pendiente = -a/b, intersecto = -c/b",
+                                            text = variables.opcion_2_lineal,
                                             variable = radiobar1,
                                             value = "b",
                                             font = (font_1, 18),
@@ -898,7 +890,7 @@ def preguntas(valor):
 #--------------------------------------------opcion 3-----------------------------------------
             
                 radio_1_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Pendiente = a/b, intersecto = c/b",
+                                            text = variables.opcion_3_lineal,
                                             variable = radiobar1,
                                             value = "c",
                                             font = (font_1, 18),
@@ -923,8 +915,7 @@ def preguntas(valor):
             elif pregunta == 2:
                 
                 label_pregunta_2 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                            text = """2.Un recipiente vacío comienza a llenarse con agua a ritmo constante. Al cabo de un minuto la altura del nivel del agua es de 3cm. A los dos minutos, de 6cm, y así, sucesivamente.
-Determine la función que representa la altura del agua en función del tiempo x:""",
+                                            text = variables.pregunta_2_lineal,
                                             font = (font_1, 22),
                                             text_color = "black",
                                             fg_color="transparent",
@@ -936,7 +927,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                                             value = "other",
                                             )
                 radio_2_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "A)y = 3x ",
+                                            text = variables.opcion_1_2_lineal,
                                             variable = radiobar2,
                                             value = "a",
                                             font = (font_1, 18),
@@ -947,7 +938,7 @@ Determine la función que representa la altura del agua en función del tiempo x
 #--------------------------------------------opcion 2-----------------------------------------
             
                 radio_2_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "B)y = 3x-2",
+                                            text = variables.opcion_2_2_lineal,
                                             variable = radiobar2,
                                             value = "b",
                                             font = (font_1, 18),
@@ -958,7 +949,7 @@ Determine la función que representa la altura del agua en función del tiempo x
 #--------------------------------------------opcion 3-----------------------------------------
             
                 radio_2_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "C)Datos insuficientes",
+                                            text = variables.opcion_3_2_lineal,
                                             variable = radiobar2,
                                             value = "c",
                                             font = (font_1, 18),
@@ -983,9 +974,8 @@ Determine la función que representa la altura del agua en función del tiempo x
 #--------------------------------------------pregunta 3-----------------------------------------
             elif pregunta == 3:
                 label_pregunta_3 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                    
-                                            text = "3.Antonio va a comprarse un teléfono móvil y está estudiando la oferta de dos compañías distintas: La compañía A le ofrece pagar 0,2$ por el establecimiento de la llamada y 0,15$ por cada minuto de llamada. La compañía B le ofrece pagar 0,5$ por el establecimiento de la llamada y 0,05$ por cada minuto de llamada. \n Calcular cuándo es más recomendable una compañía u otra en función del tiempo de duración de una llamada, e incluso cuando las dos tienen el mismo coste:",
-                                           font = (font_1, 22),
+                                            text = variables.pregunta_3_lineal,
+                                            font = (font_1, 22),
                                             text_color = "black",
                                             fg_color="transparent",
                                             )
@@ -997,7 +987,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                                             value = "other",
                                             )
                 radio_3_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "A)Iguales con 2 minutos, con menos de 2 minutos conviene A, con más de 2 minutos conviene B",
+                                            text = variables.opcion_1_3_lineal,
                                             variable = radiobar3,
                                             value = "a",
                                             font = (font_1, 18),
@@ -1008,7 +998,7 @@ Determine la función que representa la altura del agua en función del tiempo x
 #--------------------------------------------opcion 2-----------------------------------------
             
                 radio_3_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "B)Iguales con 4 minutos, con menos de 4 minutos conviene A, con más de 2 minutos conviene B",
+                                            text = variables.opcion_2_3_lineal,
                                             variable = radiobar3,
                                             value = "b",
                                             font = (font_1, 18),
@@ -1019,7 +1009,7 @@ Determine la función que representa la altura del agua en función del tiempo x
 #--------------------------------------------opcion 3-----------------------------------------
             
                 radio_3_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "C)Iguales con 3 minutos, con menos de 3 minutos conviene A, con más de 3 minutos conviene B",
+                                            text =  variables.opcion_3_3_lineal,
                                             variable = radiobar3,
                                             value = "c",
                                             font = (font_1, 18),
@@ -1046,7 +1036,7 @@ Determine la función que representa la altura del agua en función del tiempo x
         elif valor == 2:
             if pregunta == 1:
                 label_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                            text = "1.Determinar dominio, rango y cortes de la función",
+                                            text = variables.pregunta_1_cuadratica,
                                             width = 910,
                                             height = 240,
                                             font = (font_1, 22),
@@ -1054,24 +1044,12 @@ Determine la función que representa la altura del agua en función del tiempo x
                                             fg_color="transparent",
                                             )
                 label_pregunta_1.pack(padx=5, pady=2, expand=True, anchor="n")
-                imagenlineal = ctk.CTkImage(light_image=Image.open("cuadratica1.png"), 
-                                dark_image=Image.open("cuadratica1.png"),
-                                size = (300,200)
-                                )
-
-                imagen_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas, 
-                                        image = variables.imagen_1_exponencial,
-                                        width = 400,
-                                        height = 200,
-                                        text = ""
-                                        )
-                imagen_pregunta_1.pack(padx=2, pady=1, expand=True, anchor="center")
 
                 radiobar1 = ctk.StringVar(master = frame_scroll_preguntas,
                                             value = "other",
                                             )
                 radio_1_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "A)Dominio: R, Rango: y > -17, Corte y: (0, -10), corte x : (9+(51)^(1/2))/ 3),0)",
+                                            text = variables.opcion_1_cuadratica,
                                             variable = radiobar1,
                                             value = "a",
                                             font = (font_1, 18),
@@ -1080,7 +1058,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_1_1.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_1_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "B)Dominio: R, Rango: y < -17, Corte y: (10, 0), corte x: no tiene",
+                                            text = variables.opcion_2_cuadratica,
                                             variable = radiobar1,
                                             value = "b",
                                             font = (font_1, 18),
@@ -1089,7 +1067,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_1_2.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_1_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "C)Dominio: R, Rango: y > -17, Corte y: (0, 10), Cortes x: (9+(51)^(1/2))/ 3),0) y (9+-(51)^(1/2))/ 3),0)",
+                                            text = variables.opcion_3_cuadratica,
                                             variable = radiobar1,
                                             value = "c",
                                             font = (font_1, 18),
@@ -1113,14 +1091,14 @@ Determine la función que representa la altura del agua en función del tiempo x
 
             elif pregunta == 2:
                 label_pregunta_2 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                            text = "2.	En un medio de cultivo se introdujeron 500 bacterias que comenzaron a reproducirse al cabo de cierto tiempo se modificó el medio y el número de bacterias comenzó a disminuir. Se supone que la cantidad de bacterias, al cabo de x minutos, está dada por la fórmula: ",
+                                            text = variables.pregunta_2_cuadratica,
                                             )
                 
                 radiobar2 = ctk.StringVar(master = frame_scroll_preguntas,
                                             value = "other",
                                             )
                 radio_2_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 1",
+                                            text = variables.opcion_1_2_cuadratica,
                                             variable = radiobar2,
                                             value = "a",
                                             font = (font_1, 18),
@@ -1129,7 +1107,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_2_1.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_2_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 2",
+                                            text = variables.opcion_2_2_cuadratica,
                                             variable = radiobar2,
                                             value = "b",
                                             font = (font_1, 18),
@@ -1138,7 +1116,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_2_2.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_2_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 3",
+                                            text = variables.opcion_3_2_cuadratica,
                                             variable = radiobar2,
                                             value = "c",
                                             font = (font_1, 18),
@@ -1154,12 +1132,12 @@ Determine la función que representa la altura del agua en función del tiempo x
                                             corner_radius = 32,
                                             fg_color = "white",
                                             hover_color = "light blue",
-                                            command = lambda: verificar_respuesta(radiobar2.get(), "c", valor)
+                                            command = lambda: verificar_respuesta(radiobar2.get(), "b", valor)
                                             )
                 buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
             elif pregunta == 3:
                 label_pregunta_3 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                            text = "texto_3",
+                                            text = variables.pregunta_3_cuadratica,
                                             width = 910,
                                             height = 240,
                                             )
@@ -1168,7 +1146,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                                             value = "other",
                                             )
                 radio_3_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 1",
+                                            text = variables.opcion_1_3_cuadratica,
                                             variable = radiobar3,
                                             value = "a",
                                             font = (font_1, 18),
@@ -1177,7 +1155,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_3_1.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_3_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 2",
+                                            text = variables.opcion_2_3_cuadratica,
                                             variable = radiobar3,
                                             value = "b",
                                             font = (font_1, 18),
@@ -1186,7 +1164,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_3_2.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_3_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 3",
+                                            text = variables.opcion_3_3_cuadratica,
                                             variable = radiobar3,
                                             value = "c",
                                             font = (font_1, 18),
@@ -1209,7 +1187,7 @@ Determine la función que representa la altura del agua en función del tiempo x
         elif valor == 3:
             if pregunta == 1:
                 label_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                            text = "texto_1",
+                                            text = variables.pregunta_1_raiz,
                                             width = 910,
                                             height = 240,
                                             font = (font_1, 22),
@@ -1219,7 +1197,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 label_pregunta_1.pack(padx=5, pady=2, expand=True, anchor="n")
 
                 imagen_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas, 
-                                        image = variables.imagen_1_exponencial,
+                                        image = variables.imagen_pregunta_1_raiz,
                                         width = 400,
                                         height = 200,
                                         text = ""
@@ -1230,7 +1208,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                                             value = "other",
                                             )
                 radio_1_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 1",
+                                            text = variables.opcion_1_1_raiz,
                                             variable = radiobar1,
                                             value = "a",
                                             font = (font_1, 18),
@@ -1239,7 +1217,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_1_1.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_1_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 2",
+                                            text = variables.opcion_2_1_raiz,
                                             variable = radiobar1,
                                             value = "b",
                                             font = (font_1, 18),
@@ -1248,7 +1226,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_1_2.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_1_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 3",
+                                            text = variables.opcion_3_1_raiz,
                                             variable = radiobar1,
                                             value = "c",
                                             font = (font_1, 18),
@@ -1265,22 +1243,32 @@ Determine la función que representa la altura del agua en función del tiempo x
                                             corner_radius = 32,
                                             fg_color = "white",
                                             hover_color = "light blue",
-                                            command = lambda: verificar_respuesta(radiobar1.get(), "c", valor)
+                                            command = lambda: verificar_respuesta(radiobar1.get(), "a", valor)
                                             )
                 buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
 
             elif pregunta == 2:
                 label_pregunta_2 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                            text = "texto_2",
+                                            text = variables.pregunta_2_raiz,
                                             width = 910,
                                             height = 240,
                                             )
+                
+                label_pregunta_2.pack(padx=5, pady=2, expand=True, anchor="n")
+
+                imagen_pregunta_2 = ctk.CTkLabel(master = frame_scroll_preguntas, 
+                                        image = variables.imagen_pregunta_2_raiz,
+                                        width = 400,
+                                        height = 200,
+                                        text = ""
+                                        )
+                imagen_pregunta_2.pack(padx=2, pady=1, expand=True, anchor="center")
                 
                 radiobar2 = ctk.StringVar(master = frame_scroll_preguntas,
                                             value = "other",
                                             )
                 radio_2_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 1",
+                                            text = variables.opcion_1_2_raiz,
                                             variable = radiobar2,
                                             value = "a",
                                             font = (font_1, 18),
@@ -1289,7 +1277,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_2_1.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_2_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 2",
+                                            text = variables.opcion_2_2_raiz,
                                             variable = radiobar2,
                                             value = "b",
                                             font = (font_1, 18),
@@ -1298,7 +1286,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_2_2.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_2_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 3",
+                                            text = variables.opcion_3_2_raiz,
                                             variable = radiobar2,
                                             value = "c",
                                             font = (font_1, 18),
@@ -1320,16 +1308,25 @@ Determine la función que representa la altura del agua en función del tiempo x
 
             elif pregunta == 3:
                 label_pregunta_3 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                            text = "texto_3",
+                                            text = variables.pregunta_3_raiz,
                                             width = 910,
                                             height = 240,
                                             )
+
+                label_pregunta_3.pack(padx=5, pady=2, expand=True, anchor="n")
+                imagen_pregunta_3 = ctk.CTkLabel(master = frame_scroll_preguntas, 
+                                        image = variables.imagen_pregunta_3_raiz,
+                                        width = 400,
+                                        height = 200,
+                                        text = ""
+                                        )
+                imagen_pregunta_3.pack(padx=2, pady=1, expand=True, anchor="center")
                 
                 radiobar3 = ctk.StringVar(master = frame_scroll_preguntas,
                                             value = "other",
                                             )
                 radio_3_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 1",
+                                            text = variables.opcion_1_3_raiz,
                                             variable = radiobar3,
                                             value = "a",
                                             font = (font_1, 18),
@@ -1338,7 +1335,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_3_1.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_3_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 2",
+                                            text = variables.opcion_2_3_raiz,
                                             variable = radiobar3,
                                             value = "b",
                                             font = (font_1, 18),
@@ -1347,7 +1344,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_3_2.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_3_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 3",
+                                            text = variables.opcion_3_3_raiz,
                                             variable = radiobar3,
                                             value = "c",
                                             font = (font_1, 18),
@@ -1363,13 +1360,13 @@ Determine la función que representa la altura del agua en función del tiempo x
                                             corner_radius = 32,
                                             fg_color = "white",
                                             hover_color = "light blue",
-                                            command = lambda: verificar_respuesta(radiobar3.get(), "c", valor)
+                                            command = lambda: verificar_respuesta(radiobar3.get(), "b", valor)
                                             )
                 buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
         elif valor == 4:
             if pregunta == 1:
                 label_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                            text = "texto_1",
+                                            text = variables.pregunta_1_exponencial,
                                             width = 910,
                                             height = 240,
                                             font = (font_1, 22),
@@ -1390,7 +1387,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                                             value = "other",
                                             )
                 radio_1_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 1",
+                                            text = variables.opcion_1_1_exponencial,
                                             variable = radiobar1,
                                             value = "a",
                                             font = (font_1, 18),
@@ -1399,7 +1396,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_1_1.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_1_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 2",
+                                            text = variables.opcion_2_1_exponencial,
                                             variable = radiobar1,
                                             value = "b",
                                             font = (font_1, 18),
@@ -1408,7 +1405,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_1_2.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_1_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 3",
+                                            text = variables.opcion_3_1_exponencial,
                                             variable = radiobar1,
                                             value = "c",
                                             font = (font_1, 18),
@@ -1425,22 +1422,32 @@ Determine la función que representa la altura del agua en función del tiempo x
                                             corner_radius = 32,
                                             fg_color = "white",
                                             hover_color = "light blue",
-                                            command = lambda: verificar_respuesta(radiobar1.get(), "c", valor)
+                                            command = lambda: verificar_respuesta(radiobar1.get(), "a", valor)
                                             )
                 buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
 
             elif pregunta == 2:
                 label_pregunta_2 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                            text = "texto_2",
+                                            text = variables.pregunta_2_exponencial,
                                             width = 910,
                                             height = 240,
                                             )
+
+                label_pregunta_2.pack(padx=5, pady=2, expand=True, anchor="n")
+
+                imagen_pregunta_2 = ctk.CTkLabel(master = frame_scroll_preguntas, 
+                                        image = variables.imagen_pregunta_2_exponencial,
+                                        width = 400,
+                                        height = 200,
+                                        text = ""
+                                        )
+                imagen_pregunta_2.pack(padx=2, pady=1, expand=True, anchor="center")
                 
                 radiobar2 = ctk.StringVar(master = frame_scroll_preguntas,
                                             value = "other",
                                             )
                 radio_2_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 1",
+                                            text = variables.opcion_1_2_exponencial,
                                             variable = radiobar2,
                                             value = "a",
                                             font = (font_1, 18),
@@ -1449,7 +1456,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_2_1.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_2_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 2",
+                                            text = variables.opcion_2_2_exponencial,
                                             variable = radiobar2,
                                             value = "b",
                                             font = (font_1, 18),
@@ -1458,7 +1465,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_2_2.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_2_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 3",
+                                            text = variables.opcion_3_2_exponencial,
                                             variable = radiobar2,
                                             value = "c",
                                             font = (font_1, 18),
@@ -1474,22 +1481,24 @@ Determine la función que representa la altura del agua en función del tiempo x
                                             corner_radius = 32,
                                             fg_color = "white",
                                             hover_color = "light blue",
-                                            command = lambda: verificar_respuesta(radiobar2.get(), "c", valor)
+                                            command = lambda: verificar_respuesta(radiobar2.get(), "b", valor)
                                             )
                 buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
 
             elif pregunta == 3:
                 label_pregunta_3 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                            text = "texto_3",
+                                            text = variables.pregunta_3_exponencial,
                                             width = 910,
                                             height = 240,
                                             )
+
+                label_pregunta_3.pack(padx=5, pady=2, expand=True, anchor="n")
                 
                 radiobar3 = ctk.StringVar(master = frame_scroll_preguntas,
                                             value = "other",
                                             )
                 radio_3_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 1",
+                                            text = variables.opcion_1_3_exponencial,
                                             variable = radiobar3,
                                             value = "a",
                                             font = (font_1, 18),
@@ -1498,7 +1507,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_3_1.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_3_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 2",
+                                            text = variables.opcion_2_3_exponencial,
                                             variable = radiobar3,
                                             value = "b",
                                             font = (font_1, 18),
@@ -1507,7 +1516,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_3_2.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_3_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 3",
+                                            text = variables.opcion_3_3_exponencial,
                                             variable = radiobar3,
                                             value = "c",
                                             font = (font_1, 18),
@@ -1529,7 +1538,7 @@ Determine la función que representa la altura del agua en función del tiempo x
         elif valor == 5:
             if pregunta == 1:
                 label_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                            text = "texto_1",
+                                            text = variables.pregunta_1_logaritmica,
                                             width = 910,
                                             height = 240,
                                             font = (font_1, 22),
@@ -1539,7 +1548,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 label_pregunta_1.pack(padx=5, pady=2, expand=True, anchor="n")
 
                 imagen_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas, 
-                                        image = variables.imagen_1_exponencial,
+                                        image = variables.imagen_1_logaritmica,
                                         width = 400,
                                         height = 200,
                                         text = ""
@@ -1550,7 +1559,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                                             value = "other",
                                             )
                 radio_1_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 1",
+                                            text = variables.opcion_1_1_logaritmica,
                                             variable = radiobar1,
                                             value = "a",
                                             font = (font_1, 18),
@@ -1559,7 +1568,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_1_1.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_1_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 2",
+                                            text = variables.opcion_2_1_logaritmica,
                                             variable = radiobar1,
                                             value = "b",
                                             font = (font_1, 18),
@@ -1568,7 +1577,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_1_2.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_1_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 3",
+                                            text = variables.opcion_3_1_logaritmica,
                                             variable = radiobar1,
                                             value = "c",
                                             font = (font_1, 18),
@@ -1585,22 +1594,24 @@ Determine la función que representa la altura del agua en función del tiempo x
                                             corner_radius = 32,
                                             fg_color = "white",
                                             hover_color = "light blue",
-                                            command = lambda: verificar_respuesta(radiobar1.get(), "c", valor)
+                                            command = lambda: verificar_respuesta(radiobar1.get(), "a", valor)
                                             )
                 buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
 
             elif pregunta == 2:
                 label_pregunta_2 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                            text = "texto_2",
+                                            text = variables.pregunta_2_logaritmica,
                                             width = 910,
                                             height = 240,
                                             )
+
+                label_pregunta_2.pack(padx=5, pady=2, expand=True, anchor="n")
                 
                 radiobar2 = ctk.StringVar(master = frame_scroll_preguntas,
                                             value = "other",
                                             )
                 radio_2_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 1",
+                                            text = variables.opcion_1_2_logaritmica,
                                             variable = radiobar2,
                                             value = "a",
                                             font = (font_1, 18),
@@ -1609,7 +1620,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_2_1.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_2_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 2",
+                                            text = variables.opcion_2_2_logaritmica,
                                             variable = radiobar2,
                                             value = "b",
                                             font = (font_1, 18),
@@ -1618,7 +1629,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_2_2.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_2_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 3",
+                                            text = variables.opcion_3_2_logaritmica,
                                             variable = radiobar2,
                                             value = "c",
                                             font = (font_1, 18),
@@ -1640,16 +1651,26 @@ Determine la función que representa la altura del agua en función del tiempo x
 
             elif pregunta == 3:
                 label_pregunta_3 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                            text = "texto_3",
+                                            text = variables.pregunta_3_logaritmica,
                                             width = 910,
                                             height = 240,
                                             )
+
+                label_pregunta_3.pack(padx=5, pady=2, expand=True, anchor="n")
+
+                imagen_pregunta_3 = ctk.CTkLabel(master = frame_scroll_preguntas, 
+                                        image = variables.imagen_pregunta_3_logaritmica,
+                                        width = 400,
+                                        height = 200,
+                                        text = ""
+                                        )
+                imagen_pregunta_3.pack(padx=2, pady=1, expand=True, anchor="center")
                 
                 radiobar3 = ctk.StringVar(master = frame_scroll_preguntas,
                                             value = "other",
                                             )
                 radio_3_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 1",
+                                            text = variables.opcion_1_3_logaritmica,
                                             variable = radiobar3,
                                             value = "a",
                                             font = (font_1, 18),
@@ -1658,7 +1679,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_3_1.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_3_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 2",
+                                            text = variables.opcion_2_3_logaritmica,
                                             variable = radiobar3,
                                             value = "b",
                                             font = (font_1, 18),
@@ -1667,7 +1688,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_3_2.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_3_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 3",
+                                            text = variables.opcion_3_3_logaritmica,
                                             variable = radiobar3,
                                             value = "c",
                                             font = (font_1, 18),
@@ -1683,13 +1704,13 @@ Determine la función que representa la altura del agua en función del tiempo x
                                             corner_radius = 32,
                                             fg_color = "white",
                                             hover_color = "light blue",
-                                            command = lambda: verificar_respuesta(radiobar3.get(), "c", valor)
+                                            command = lambda: verificar_respuesta(radiobar3.get(), "a", valor)
                                             )
                 buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
         elif valor == 6:
             if pregunta == 1:
                 label_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                            text = "texto_1",
+                                            text = variables.pregunta_1_seno,
                                             width = 910,
                                             height = 240,
                                             font = (font_1, 22),
@@ -1698,19 +1719,11 @@ Determine la función que representa la altura del agua en función del tiempo x
                                             )
                 label_pregunta_1.pack(padx=5, pady=2, expand=True, anchor="n")
 
-                imagen_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas, 
-                                        image = variables.imagen_1_exponencial,
-                                        width = 400,
-                                        height = 200,
-                                        text = ""
-                                        )
-                imagen_pregunta_1.pack(padx=2, pady=1, expand=True, anchor="center")
-
                 radiobar1 = ctk.StringVar(master = frame_scroll_preguntas,
                                             value = "other",
                                             )
                 radio_1_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 1",
+                                            text = variables.opcion_1_1_seno,
                                             variable = radiobar1,
                                             value = "a",
                                             font = (font_1, 18),
@@ -1719,7 +1732,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_1_1.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_1_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 2",
+                                            text = variables.opcion_2_1_seno,
                                             variable = radiobar1,
                                             value = "b",
                                             font = (font_1, 18),
@@ -1728,7 +1741,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_1_2.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_1_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 3",
+                                            text = variables.opcion_3_1_seno,
                                             variable = radiobar1,
                                             value = "c",
                                             font = (font_1, 18),
@@ -1751,16 +1764,27 @@ Determine la función que representa la altura del agua en función del tiempo x
 
             elif pregunta == 2:
                 label_pregunta_2 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                            text = "texto_2",
+                                            text = variables.pregunta_2_seno,
                                             width = 910,
                                             height = 240,
+                                            text_color = "black",
                                             )
+
+                label_pregunta_2.pack(padx=5, pady=2, expand=True, anchor="n")
+
+                imagen_pregunta_2 = ctk.CTkLabel(master = frame_scroll_preguntas, 
+                                        image = variables.imagen_pregunta_2_seno,
+                                        width = 400,
+                                        height = 200,
+                                        text = ""
+                                        )
+                imagen_pregunta_2.pack(padx=2, pady=1, expand=True, anchor="center")
                 
                 radiobar2 = ctk.StringVar(master = frame_scroll_preguntas,
                                             value = "other",
                                             )
                 radio_2_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 1",
+                                            text = variables.opcion_1_2_seno,
                                             variable = radiobar2,
                                             value = "a",
                                             font = (font_1, 18),
@@ -1769,7 +1793,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_2_1.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_2_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 2",
+                                            text = variables.opcion_2_2_seno,
                                             variable = radiobar2,
                                             value = "b",
                                             font = (font_1, 18),
@@ -1778,7 +1802,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_2_2.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_2_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 3",
+                                            text = variables.opcion_3_2_seno,
                                             variable = radiobar2,
                                             value = "c",
                                             font = (font_1, 18),
@@ -1794,22 +1818,33 @@ Determine la función que representa la altura del agua en función del tiempo x
                                             corner_radius = 32,
                                             fg_color = "white",
                                             hover_color = "light blue",
-                                            command = lambda: verificar_respuesta(radiobar2.get(), "c", valor)
+                                            command = lambda: verificar_respuesta(radiobar2.get(), "b", valor)
                                             )
                 buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
 
             elif pregunta == 3:
                 label_pregunta_3 = ctk.CTkLabel(master = frame_scroll_preguntas,
-                                            text = "texto_3",
+                                            text = variables.pregunta_3_seno,
                                             width = 910,
                                             height = 240,
+                                            text_color = "black",
                                             )
+
+                label_pregunta_3.pack(padx=5, pady=2, expand=True, anchor="n")
+
+                imagen_pregunta_3 = ctk.CTkLabel(master = frame_scroll_preguntas, 
+                                        image = variables.imagen_pregunta_3_seno,
+                                        width = 400,
+                                        height = 200,
+                                        text = ""
+                                        )
+                imagen_pregunta_3.pack(padx=2, pady=1, expand=True, anchor="center")
                 
                 radiobar3 = ctk.StringVar(master = frame_scroll_preguntas,
                                             value = "other",
                                             )
                 radio_3_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 1",
+                                            text = variables.opcion_1_3_seno,
                                             variable = radiobar3,
                                             value = "a",
                                             font = (font_1, 18),
@@ -1818,7 +1853,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_3_1.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_3_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 2",
+                                            text = variables.opcion_2_3_seno,
                                             variable = radiobar3,
                                             value = "b",
                                             font = (font_1, 18),
@@ -1827,7 +1862,7 @@ Determine la función que representa la altura del agua en función del tiempo x
                 radio_3_2.pack(padx=5, pady=2, expand=True, anchor="n")
             
                 radio_3_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 3",
+                                            text = variables.opcion_3_3_seno,
                                             variable = radiobar3,
                                             value = "c",
                                             font = (font_1, 18),
