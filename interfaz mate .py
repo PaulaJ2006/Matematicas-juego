@@ -1,8 +1,15 @@
+import matplotlib.pyplot as plt
 from tkinter import *
 import customtkinter as ctk
 from PIL import Image, ImageTk
 import variables
 from tkinter import messagebox as mb
+import main
+from matplotlib import pyplot as plt
+plt.close('all')
+import matplotlib
+matplotlib.use("TkAgg")
+
 
 #----------------------------------ventanas---------------------------------------
 #VENTANA PRINCIPAL
@@ -13,6 +20,23 @@ root.title("Descartico")
 root._set_appearance_mode("light")
 root.iconbitmap("descartico.ico")
 
+#--------------------------------------------frames------------------------------------------
+frame_principal = ctk.CTkFrame(master = root, 
+                                        width = 1000, 
+                                        height = 600, 
+                                        corner_radius = 10, 
+                                        fg_color = "#D6EAF8", 
+                                        border_color = "white", 
+                                        border_width = 2
+                                        )
+frame_imagen = ctk.CTkFrame(master = frame_principal,
+                                    width = 400,
+                                    height = 400,
+                                    corner_radius = 10,
+                                    fg_color = "white",
+                                    border_color = "black",
+                                    border_width = 2
+                                    )
 
 #----------------------------------variables-------------------------------------
 font_1 = ctk.CTkFont(family="Inherit", size=26, weight="bold")
@@ -23,6 +47,23 @@ jugar_window = None
 ajustes_window = None
 aprender_window = None
 preguntas_window = None
+
+#----------------------------------------------labels--------------------------------------------
+titulo = ctk.CTkLabel(master = frame_imagen, 
+                                text = "DESCARTICO", 
+                                font = font_2, 
+                                text_color = "red",
+                                width = 200,
+                                height = 90
+                                )
+
+imagen_ = ctk.CTkLabel(master = frame_imagen, 
+                                image = variables.imagen,
+                                width = 200,
+                                height = 200
+                                )
+
+
 #----------------------------------funciones-------------------------------------
 #-----------------------------VENTANA INFORMACION-------------------------------------
 
@@ -730,27 +771,34 @@ def cerrar_aprender():
 def verificar_respuesta(valor, correcto, nivel):
     if valor == "other":
         mb.showerror("Error", "Debe seleccionar una opción")
+
     elif valor == correcto:
         variables.vidas += 1
         mb.showinfo("Correcto", "Respuesta correcta") 
+        variables.pregunta += 1
         preguntas(nivel)
     else:
         mb.showerror("Incorrecto", "Respuesta incorrecta")
+        variables.pregunta += 1
         preguntas(nivel)
+
     if variables.pregunta == 3 and variables.vidas == 0:
         mb.showwarning("cochino", "Cochino hp!")
         verificar_respuesta(0,1, nivel)
-    variables.pregunta += 1
-    
-    
+        
+    elif variables.pregunta ==  3 and variables.vidas > 0:
+        main.main(variables.vidas)
 
-
+    
 def preguntas(valor):
     global preguntas_window
+
     pregunta = variables.pregunta
+
     if preguntas_window is not None:
         preguntas_window.destroy()
         preguntas_window = None
+
     if preguntas_window is None:
         preguntas_window = ctk.CTkToplevel(root)
         preguntas_window.geometry("1000x600")
@@ -775,8 +823,10 @@ def preguntas(valor):
                         )
         frame_scroll_preguntas.place(relx = 0.5, rely = 0.5, anchor = "center")
 
+#--------------------------------------------NIVEL 1-----------------------------------------
         if valor == 1:
-            if pregunta == 1:
+#--------------------------------------------pregunta 1-----------------------------------------
+            if variables.pregunta == 1:
                 label_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas,
                                             text = "texto_1",
                                             width = 910,
@@ -794,36 +844,42 @@ def preguntas(valor):
                                         text = ""
                                         )
                 imagen_pregunta_1.pack(padx=2, pady=1, expand=True, anchor="center")
-
+#--------------------------------------------opcion 1-----------------------------------------
                 radiobar1 = ctk.StringVar(master = frame_scroll_preguntas,
                                             value = "other",
                                             )
                 radio_1_1 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 1",
+                                            text = "Pendiente = a, intersecto = c",
                                             variable = radiobar1,
                                             value = "a",
                                             font = (font_1, 18),
                                             text_color = "black",
                                             )
                 radio_1_1.pack(padx=5, pady=2, expand=True, anchor="n")
+
+#--------------------------------------------opcion 2-----------------------------------------
             
                 radio_1_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 2",
+                                            text = "Pendiente = -a/b, intersecto = -c/b",
                                             variable = radiobar1,
                                             value = "b",
                                             font = (font_1, 18),
                                             text_color = "black",
                                             )
                 radio_1_2.pack(padx=5, pady=2, expand=True, anchor="n")
+
+#--------------------------------------------opcion 3-----------------------------------------
             
                 radio_1_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
-                                            text = "Opción 3",
+                                            text = "Pendiente = a/b, intersecto = c/b",
                                             variable = radiobar1,
                                             value = "c",
                                             font = (font_1, 18),
                                             text_color = "black",
                                             )
                 radio_1_3.pack(padx=5, pady=2, expand=True, anchor="n")
+
+#--------------------------------------------boton enviar-----------------------------------------
                 buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
                                             text = "Enviar",
                                             font = (font_1, 18),
@@ -833,10 +889,10 @@ def preguntas(valor):
                                             corner_radius = 32,
                                             fg_color = "white",
                                             hover_color = "light blue",
-                                            command = lambda: verificar_respuesta(radiobar1.get(), "c", valor)
+                                            command = lambda: verificar_respuesta(radiobar1.get(), "b", valor)
                                             )
-                
                 buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+#--------------------------------------------pregunta 2-----------------------------------------
             elif pregunta == 2:
                 
                 label_pregunta_2 = ctk.CTkLabel(master = frame_scroll_preguntas,
@@ -845,6 +901,7 @@ def preguntas(valor):
                                             height = 240,
                                             )
                 
+#--------------------------------------------opcion 1-----------------------------------------
                 radiobar2 = ctk.StringVar(master = frame_scroll_preguntas,
                                             value = "other",
                                             )
@@ -856,6 +913,8 @@ def preguntas(valor):
                                             text_color = "black",
                                             )
                 radio_2_1.pack(padx=5, pady=2, expand=True, anchor="n")
+
+#--------------------------------------------opcion 2-----------------------------------------
             
                 radio_2_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
                                             text = "Opción 2",
@@ -865,6 +924,8 @@ def preguntas(valor):
                                             text_color = "black",
                                             )
                 radio_2_2.pack(padx=5, pady=2, expand=True, anchor="n")
+
+#--------------------------------------------opcion 3-----------------------------------------
             
                 radio_2_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
                                             text = "Opción 3",
@@ -875,6 +936,8 @@ def preguntas(valor):
                                             )
                 radio_2_3.pack(padx=5, pady=2, expand=True, anchor="n")
 
+#--------------------------------------------boton enviar-----------------------------------------
+
                 buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
                                             text = "Enviar",
                                             font = (font_1, 18),
@@ -884,14 +947,19 @@ def preguntas(valor):
                                             corner_radius = 32,
                                             fg_color = "white",
                                             hover_color = "light blue",
-                                            command = lambda: verificar_respuesta(radiobar2.get(), "c", valor)
+                                            command = lambda: verificar_respuesta(radiobar2.get(), "b", valor)
                                             )
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+#--------------------------------------------pregunta 3-----------------------------------------
             elif pregunta == 3:
                 label_pregunta_3 = ctk.CTkLabel(master = frame_scroll_preguntas,
                                             text = "texto_3",
                                             width = 910,
                                             height = 240,
                                             )
+                label_pregunta_3.pack(padx=5, pady=2, expand=True, anchor="n")
+
+#--------------------------------------------opcion 1-----------------------------------------
                 
                 radiobar3 = ctk.StringVar(master = frame_scroll_preguntas,
                                             value = "other",
@@ -904,6 +972,8 @@ def preguntas(valor):
                                             text_color = "black",
                                             )
                 radio_3_1.pack(padx=5, pady=2, expand=True, anchor="n")
+
+#--------------------------------------------opcion 2-----------------------------------------
             
                 radio_3_2 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
                                             text = "Opción 2",
@@ -913,6 +983,8 @@ def preguntas(valor):
                                             text_color = "black",
                                             )
                 radio_3_2.pack(padx=5, pady=2, expand=True, anchor="n")
+
+#--------------------------------------------opcion 3-----------------------------------------
             
                 radio_3_3 = ctk.CTkRadioButton(master = frame_scroll_preguntas,
                                             text = "Opción 3",
@@ -922,6 +994,9 @@ def preguntas(valor):
                                             text_color = "black"
                                             )
                 radio_3_3.pack(padx=5, pady=2, expand=True, anchor="n")
+
+#--------------------------------------------boton enviar-----------------------------------------
+
                 buton_enviar = ctk.CTkButton(master = frame_scroll_preguntas,
                                             text = "Enviar",
                                             font = (font_1, 18),
@@ -933,7 +1008,9 @@ def preguntas(valor):
                                             hover_color = "light blue",
                                             command = lambda: verificar_respuesta(radiobar3.get(), "c", valor)
                                             )
-            buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+                buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
+
+#--------------------------------------------NIVEL 2-----------------------------------------
         elif valor == 2:
             if pregunta == 1:
                 label_pregunta_1 = ctk.CTkLabel(master = frame_scroll_preguntas,
@@ -1736,29 +1813,8 @@ def preguntas(valor):
                                             )
                 buton_enviar.pack(padx=5, pady=2, expand=True, anchor="n")
 
-
-
     jugar_window.withdraw()
         
-#--------------------------------------------frames------------------------------------------
-frame_principal = ctk.CTkFrame(master = root, 
-                                        width = 1000, 
-                                        height = 600, 
-                                        corner_radius = 10, 
-                                        fg_color = "#D6EAF8", 
-                                        border_color = "white", 
-                                        border_width = 2
-                                        )
-frame_imagen = ctk.CTkFrame(master = frame_principal,
-                                    width = 400,
-                                    height = 400,
-                                    corner_radius = 10,
-                                    fg_color = "white",
-                                    border_color = "black",
-                                    border_width = 2
-                                    )
-
-
 #----------------------------------------------botones------------------------------------------
 boton_info = ctk.CTkButton(master = frame_principal, 
                                     text="INFO", 
@@ -1784,20 +1840,6 @@ boton_jugar = ctk.CTkButton(master = frame_principal,
                                     command= jugar
                                     )
 
-#----------------------------------------------labels--------------------------------------------
-titulo = ctk.CTkLabel(master = frame_imagen, 
-                                text = "DESCARTICO", 
-                                font = font_2, 
-                                text_color = "red",
-                                width = 200,
-                                height = 90
-                                )
-imagen_ = ctk.CTkLabel(master = frame_imagen, 
-                                image = variables.imagen,
-                                width = 200,
-                                height = 200
-                                )
-
 #----------------------------Posicionamiento--------------------------------
 frame_principal.place(relx = 0.5, rely = 0.5, anchor="center")
 frame_imagen.place(relx = 0.5, rely = 0.03, anchor = "n")
@@ -1805,7 +1847,5 @@ titulo.place(relx = 0.5, rely = 0.115, anchor = "center")
 imagen_.place(relx = 0.5, rely = 0.55,  anchor = "center")
 boton_info.place(relx = 0.05, rely = 0.83, anchor = "w")
 boton_jugar.place(relx = 0.599, rely = 0.83, anchor = "e")
-
-
 
 root.mainloop()
